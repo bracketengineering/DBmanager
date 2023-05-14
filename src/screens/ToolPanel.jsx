@@ -1,5 +1,6 @@
 import GraphVisualiser from "../components/graph/GraphVisualiser";
 import { useState, useRef, useEffect } from "react";
+import FeatureViewer from "../components/viewer/FeatureViewer";
 
 export default function ToolPanel() {
   const visRef = useRef(null);
@@ -25,7 +26,9 @@ export default function ToolPanel() {
       <div ref={visRef} id="VisualiserContainer">
         <GraphVisualiser dimensions={graphDimensions} />
       </div>
-      <div id="ViewerContainer"></div>
+      <div id="ViewerContainer">
+        <FeatureViewer />
+      </div>
       <div id="EditorContainer"></div>
     </div>
   );

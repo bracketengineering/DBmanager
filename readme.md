@@ -9,15 +9,15 @@
 ## Component Structure/Tree
 
 - App
-  - Editor
+  - ToolPanel
     - Graphical Display Window
-    - Current Editor (Display Info On Selected Item)
+    - Current Element Viewer (Display Info On Selected Item)
       - Uneditable JSON Display
       - Edit Button, which brings up an html style form to edit properties
     - 
   - LoginPage
 
-### Editor Component
+### ToolPanel Component
 
 **State**
   - currentNode

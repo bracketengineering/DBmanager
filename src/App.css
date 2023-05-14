@@ -32,3 +32,63 @@
   grid-area: editor;
   background-color: #262626;
 }
+
+#FeatureViewer {
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  height: 100%;
+  width: 100%;
+}
+
+#PreferencesContainer,
+#FeatureListContainer,
+#JSONViewer {
+  background-color: #262626;
+  border-right: 1px solid #0d0d0d;
+}
+
+#JSONViewer {
+  border-right: none;
+}
+
+#GraphPreferences {
+  display: grid;
+  height: 100%;
+  width: 100%;
+}
+
+#PreferencesListContainer {
+  overflow-y: scroll;
+  height: 31vh;
+}
+
+.PreferencesList {
+  width: 100%;
+  color: white;
+}
+
+.PreferencesList th,
+.PreferencesList td {
+  padding: 0.5em;
+  border-bottom: 1px solid lightgray;
+}
+
+#PreferencesListContainer::-webkit-scrollbar {
+  width: 10px;
+}
+
+#PreferencesListContainer::-webkit-scrollbar-track {
+  background: #262626;
+}
+
+#PreferencesListContainer::-webkit-scrollbar-thumb {
+  background-color: darkgray;
+  border-radius: 20px;
+  border: 3px solid #262626;
+}
+
+/* Firefox */
+#PreferencesListContainer {
+  scrollbar-width: thin;
+  scrollbar-color: darkgray #262626;
+}
