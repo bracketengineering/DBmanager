@@ -10,10 +10,20 @@ export default function GraphVisualiser({ dimensions }) {
   }, [])
 
   const data = {
-    nodes: [{ id: "Harry" }, { id: "Sally" }, { id: "Alice" }],
+    nodes: [{ id: "Harry" }, { id: "Sally" }, { id: "Alice" }, { id: "Xav" }, { id: "Will" }, { id: "George" }, { id: "Poo" }, { id: "Cum" }, { id: "L" }],
     links: [
       { source: "Harry", target: "Sally" },
       { source: "Harry", target: "Alice" },
+      { source: "Harry", target: "Xav" },
+      { source: "Harry", target: "Poo" },
+      { source: "George", target: "Cum" },
+      { source: "George", target: "Poo" },
+      { source: "George", target: "L" },
+      { source: "Xav", target: "George" },
+      { source: "Xav", target: "Sally" },
+      { source: "Will", target: "Poo" },
+      { source: "Will", target: "Alice" },
+      { source: "Alice", target: "Poo" },
     ],
   };
 
