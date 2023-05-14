@@ -22,3 +22,11 @@
 **State**
   - currentNode
   - inSelectingMode
+
+
+### What we need from neptune
+
+- All node information
+    - ID, label, name, other attributes, incoming edges, outgoing edges
+- All edge infomation
+    - ID, Label, Edge value, source, destination
