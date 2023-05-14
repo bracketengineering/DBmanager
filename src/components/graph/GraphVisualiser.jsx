@@ -1,6 +1,6 @@
 import { Graph } from "react-d3-graph";
 
-export default function GraphVisualiser() {
+export default function GraphVisualiser({ dimensions }) {
   const data = {
     nodes: [{ id: "Harry" }, { id: "Sally" }, { id: "Alice" }],
     links: [
@@ -9,9 +9,10 @@ export default function GraphVisualiser() {
     ],
   };
 
-  // the graph configuration, just override the ones you need
-  const myConfig = {
+  const graphConfig = {
     nodeHighlightBehavior: true,
+    width: dimensions.width,
+    height: dimensions.height,
     node: {
       color: "lightgreen",
       size: 120,
@@ -32,12 +33,15 @@ export default function GraphVisualiser() {
   };
 
   return (
-    <Graph
-      id="graph-id" // id is mandatory
-      data={data}
-      config={myConfig}
-      onClickNode={onClickNode}
-      onClickLink={onClickLink}
-    />
+    <>
+      {console.log(dimensions)}
+      <Graph
+        id="graph-id" // id is mandatory
+        data={data}
+        config={graphConfig}
+        onClickNode={onClickNode}
+        onClickLink={onClickLink}
+      />
+    </>
   );
 }

@@ -1,38 +1,34 @@
-.App {
-  text-align: center;
+#FullWidthContainer {
+  width: 100vw;
+  height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#ToolPanel {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-template-columns: 60% 40%;
+  grid-template-rows: 60% 40%;
+  grid-template-areas: 
+    "visualiser editor"
+    "viewer editor";
+  background-color: #1e1e1e;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#VisualiserContainer {
+  grid-area: visualiser;
+  border-right: 1px solid #0d0d0d;
+  border-bottom: 1px solid #0d0d0d;
+  background-color: #262626;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#ViewerContainer {
+  grid-area: viewer;
+  border-right: 1px solid #0d0d0d;
+  background-color: #262626;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#EditorContainer {
+  grid-area: editor;
+  background-color: #262626;
 }

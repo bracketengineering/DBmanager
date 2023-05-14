@@ -1,7 +1,12 @@
 import './App.css';
+import ToolPanel from './screens/ToolPanel';
 
 function App() {
-  return (<h1>Hi</h1>)
+  return (
+    <div id="FullWidthContainer">
+      <ToolPanel />
+    </div>
+  )
 }
 
 export default App;
