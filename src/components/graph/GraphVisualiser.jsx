@@ -6,7 +6,7 @@ export default function GraphVisualiser({ dimensions }) {
   const api = new APICaller();
 
   useEffect(() => {
-    api.getAllGraphData().then(response => console.log(response.json()).catch(err => console.log(err)))
+    api.getAllGraphData().then(response => console.log(JSON.stringify(response))).catch(err => console.log(err))
   }, [])
 
   const data = {
