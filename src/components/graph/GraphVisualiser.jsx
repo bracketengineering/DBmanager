@@ -14,6 +14,7 @@ export default function GraphVisualiser({ dimensions }) {
     width: dimensions.width,
     height: dimensions.height,
     node: {
+      fontColor: "white",
       color: "lightgreen",
       size: 120,
       highlightStrokeColor: "blue",

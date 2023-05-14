@@ -1,22 +1,32 @@
 import GraphVisualiser from "../components/graph/GraphVisualiser";
-import { useEffect, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function ToolPanel() {
   const visRef = useRef(null);
+  const [graphDimensions, setGraphDimensions] = useState({ width: 800, height: 400 });
 
-  useEffect(() => {}, [visRef.current]);
+  useEffect(() => {
+    function handleWindowResize() {
+      setGraphDimensions({
+        width: visRef.current.offsetWidth,
+        height: visRef.current.offsetHeight
+      })
+    }
+
+    window.addEventListener('resize', handleWindowResize);
+    handleWindowResize();
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    }
+  }, [])
 
   return (
     <div id="ToolPanel">
       <div ref={visRef} id="VisualiserContainer">
-        {visRef.current ? <GraphVisualiser dimensions={{
-          width: visRef.current.offsetWidth,
-          height: visRef.current.offsetHeight,
-        }} /> : <></>}
+        <GraphVisualiser dimensions={graphDimensions} />
       </div>
       <div id="ViewerContainer"></div>
       <div id="EditorContainer"></div>
     </div>
   );
-}
-;
+};
