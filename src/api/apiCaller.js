@@ -3,7 +3,6 @@ import axios from 'axios';
 export default class APICaller {
     constructor() {
         this.API_URL = 'https://9juqol5qb1.execute-api.eu-west-2.amazonaws.com/v2';
-        this.API_NAME = '/DBmanager';
     }
 
     /*---------------------------
@@ -17,7 +16,7 @@ export default class APICaller {
      */
     #genericPost(methodPath, data) {
         return new Promise( (resolve, reject) => {
-            axios.post(this.API_URL+this.API_URL+methodPath, data)
+            axios.post(this.API_URL+methodPath, data)
             .then((response) => {
                 resolve(response);
             })
@@ -34,7 +33,7 @@ export default class APICaller {
      */
     #genericGet(methodPath) {
         return new Promise((resolve, reject) => {
-            axios.get(this.API_URL+this.API_URL+methodPath)
+            axios.get(this.API_URL+methodPath)
                 .then((response) => {
                     resolve(response);
                 })
