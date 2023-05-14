@@ -18,8 +18,8 @@ export default class APICaller {
     #genericPost(methodPath, data) {
         return new Promise( (resolve, reject) => {
             axios.post(this.API_URL+this.API_URL+methodPath, data)
-            .then((promise) => {
-                resolve(promise);
+            .then((response) => {
+                resolve(response);
             })
             .catch(error => {
                 console.log("ERROR Generic Post Call:", error);
@@ -35,8 +35,8 @@ export default class APICaller {
     #genericGet(methodPath) {
         return new Promise((resolve, reject) => {
             axios.get(this.API_URL+this.API_URL+methodPath)
-                .then((promise) => {
-                    resolve(promise);
+                .then((response) => {
+                    resolve(response);
                 })
                 .catch(error => {
                     console.log("ERROR Generic Get Call:", error);
@@ -45,6 +45,7 @@ export default class APICaller {
                 
         });
     }
+
 
     /**
      * @returns all nodes and their respective edges in the graph and all their respective properties
