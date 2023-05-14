@@ -2,8 +2,8 @@ import axios from 'axios';
 
 export default class APICaller {
     constructor() {
-        this.API_URL = 'https://9juqol5qb1.execute-api.eu-west-2.amazonaws.com/v1';
-        this.API_NAME = 'DBmanager';
+        this.API_URL = 'https://9juqol5qb1.execute-api.eu-west-2.amazonaws.com/v2';
+        this.API_NAME = '/DBmanager';
     }
 
     /*---------------------------
