@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/DBmanager/static/css/main.6b63fb4a.css",
+    "main.js": "/DBmanager/static/js/main.ff518353.js",
+    "static/js/787.e1b40d49.chunk.js": "/DBmanager/static/js/787.e1b40d49.chunk.js",
+    "index.html": "/DBmanager/index.html",
+    "main.6b63fb4a.css.map": "/DBmanager/static/css/main.6b63fb4a.css.map",
+    "main.ff518353.js.map": "/DBmanager/static/js/main.ff518353.js.map",
+    "787.e1b40d49.chunk.js.map": "/DBmanager/static/js/787.e1b40d49.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6b63fb4a.css",
+    "static/js/main.ff518353.js"
+  ]
+}
