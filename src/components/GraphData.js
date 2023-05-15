@@ -1,5 +1,6 @@
 export default class GraphData {
   constructor(data) {
+    console.log(data);
     this._originalData = data;
     this._nodes = data.map(nodeInfo => {
       return { id: nodeInfo.id, nodeType: nodeInfo.label, name: nodeInfo.properties.name }
