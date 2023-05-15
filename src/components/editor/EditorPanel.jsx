@@ -1,6 +1,41 @@
 import "./EditorPanel.css";
 
-export default function EditorPanel() {
+export default function EditorPanel({editingMode, setEditingMode}) {
+
+  // const getInfo = (object, keys = []) => {
+  //   let info = [];
+  //   for (let key in object) {
+  //     if(typeof(object[key]) === 'object') {
+  //       info = info.concat(getInfo(object[key], keys.concat(key)))
+  //     } else {
+        
+  //     }
+  //   }
+  // }
+
+  /* 
+  <PropertyForm key={key} updateProperty={func: updateProperty}> (When user input changes value,
+     call updateProperty(key, value))
+  <SubPropertyForm object={object} subKey={e.g 'properties'} updateProperty={func: updateProperty}> (
+    function updateSubProperty = (key, newValue) => {
+      updateProperty(subKey+key, newValue);
+    }
+    Object.entries(object[subKey]).map((key, value) => {
+      <PropertyForm key={key} updateProperty={func: updateSubProperty} />
+    })
+  )
+  */
+
+  /* const object = {id:, label:, ...}
+  function updateProperty(key, newValue)
+  Object.entries(object).map((key, value) => {
+    if(typeof(value) === "object") {
+      <SubPropertyForm subKey={key} object, updateProperty>
+    } else {
+      <PropertyForm ... />
+    }
+  })*/
+
   return (
     <div id="EditorPanel">
       <div id="PanelTabsContainer">

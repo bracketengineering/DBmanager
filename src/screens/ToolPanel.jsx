@@ -15,6 +15,13 @@ export default function ToolPanel() {
   const [graphData, setGraphData] = useState(null);
   const [graphDimensions, setGraphDimensions] = useState({ width: 800, height: 400 });
   const [selectedObject, setSelectedObject] = useState({});
+  const [editingMode, setEditingMode] = useState(false);
+
+  function selectObject(newObject) {
+    if (!editingMode) {
+      setSelectedObject(newObject);
+    }
+  }
 
   useEffect(() => {
     if (!loading) {
@@ -51,7 +58,7 @@ export default function ToolPanel() {
         <InfoPanel selectedObject={selectedObject} graphData={graphData} selectObject={setSelectedObject} />
       </div>
       <div id="EditorContainer">
-        <EditorPanel />
+        <EditorPanel editingMode={editingMode} setEditingMode={setEditingMode} />
       </div>
     </div>
   );
