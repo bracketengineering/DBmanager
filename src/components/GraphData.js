@@ -9,6 +9,8 @@ export default class GraphData {
     data.map(nodeInfo => {
       nodeInfo.outgoingEdges.forEach(edge => { 
         edge.sourceName = nodeInfo.properties.name;
+        let targetNode = this.getNodeJSON(edge.target);
+        if (targetNode) {edge.targetName = targetNode.properties.name}
         links.push(edge);
       })
     })

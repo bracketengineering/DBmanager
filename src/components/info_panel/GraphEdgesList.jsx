@@ -19,7 +19,7 @@ export default function GraphEdgesList({ graphData, selectObject }) {
               )} key={index}>
                 <td>{item.id.slice(0, 4)}..</td>
                 <td>{item.sourceName}</td>
-                <td>{item.target}</td>
+                <td>{item.targetName}</td>
               </tr>
             ))}
           </tbody>
