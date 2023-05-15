@@ -15,7 +15,7 @@ export default function GraphNodesList({ graphData, selectObject }) {
             {graphData.getNodes().map((item, index) => (
               <tr onClick={() => selectObject(
                 {focusedNodeId: item.id,
-                 object: item}
+                 object: graphData.getNodeJSON(item.id)}
               )} key={index}>
                 <td>{item.id.slice(0, 4)}..</td>
                 <td>{item.nodeType}</td>
