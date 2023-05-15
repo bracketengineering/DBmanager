@@ -1,6 +1,6 @@
 import './styles/GraphObjects.css';
 
-export default function GraphNodesList({ data, selectNode }) {
+export default function GraphNodesList({ graphData, selectNode }) {
   const TEST_DATA = [
     { id: 0, name: "Will" },
     { id: 1, name: "Xav" },
@@ -19,7 +19,7 @@ export default function GraphNodesList({ data, selectNode }) {
     { id: 2, name: "George" },
   ]
 
-  if (data) return (
+  if (graphData) return (
     <div id="GraphObjects">
         <table id="GraphObjectsTable">
           <thead>
@@ -30,10 +30,10 @@ export default function GraphNodesList({ data, selectNode }) {
             </tr>
           </thead>
           <tbody>
-            {data.map((item, index) => (
+            {graphData.getNodes().map((item, index) => (
               <tr onClick={() => selectNode(item.id)} key={index}>
                 <td>{item.id.slice(0, 4)}..</td>
-                <td>{item.label}</td>
+                <td>{item.nodeType}</td>
                 <td>{item.name}</td>
               </tr>
             ))}

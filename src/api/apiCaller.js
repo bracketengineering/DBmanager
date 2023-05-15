@@ -33,7 +33,6 @@ export default class APICaller {
      */
     #genericGet(methodPath) {
         return new Promise((resolve, reject) => {
-            console.log(this.API_URL+methodPath);
             axios.get(this.API_URL+methodPath)
                 .then((response) => {
                     resolve(response.data.body);

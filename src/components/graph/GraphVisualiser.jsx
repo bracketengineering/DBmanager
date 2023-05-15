@@ -2,32 +2,21 @@ import { useEffect, useState } from "react";
 import { Graph } from "react-d3-graph";
 import CustomNode from "./CustomNode";
 
-export default function GraphVisualiser({ data, dimensions, focusedNode }) {
+export default function GraphVisualiser({ selectNode, graphData, dimensions, focusedNode }) {
   const [parsedData, setParsedData] = useState(null);
 
+  // Extract data needed from data returned from Neptune
   useEffect(() => {
-    if (data) {
-      const nodes = data.map(nodeInfo => {
-        return { id: nodeInfo.id, nodeType: nodeInfo.label, name: nodeInfo.properties.name }
-      });
-      const links = [];
-      data.map(nodeInfo => {
-        nodeInfo.outgoingEdges.forEach(edge => links.push(edge));
-      })
-
-      const result = {}
-      result.nodes = nodes;
-      result.links = links;
-      console.log(result);
-      setParsedData(result);
+    if (graphData) {
+      const parsedData = graphData.getGraphData(focusedNode);
+      setParsedData(parsedData);
     }
-  }, [data])
+  }, [graphData])
 
+  // Focus on a node when clicked in the objects list
   useEffect(() => {
     if (parsedData) {
-      console.log(`FOCUSING NODE: ${focusedNode}`);
-      let newData = Object.assign({}, parsedData);
-      newData.focusedNodeId = focusedNode;
+      let newData = graphData.getGraphData(focusedNode);
       setParsedData(newData);
     }
   }, [focusedNode])
@@ -36,6 +25,7 @@ export default function GraphVisualiser({ data, dimensions, focusedNode }) {
     nodeHighlightBehavior: true,
     width: dimensions.width,
     height: dimensions.height,
+    focusAnimationDuration: 0.2,
     initialZoom: 3,
     directed: true,
     staticGraphWithDragAndDrop: true,
@@ -56,7 +46,7 @@ export default function GraphVisualiser({ data, dimensions, focusedNode }) {
   };
 
   const onClickNode = function (nodeId) {
-    window.alert(`Clicked node ${nodeId}`);
+    selectNode(nodeId);
   };
 
   const onClickLink = function (source, target) {
