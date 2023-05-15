@@ -45,10 +45,10 @@ export default function ToolPanel() {
     <div id="ToolPanel">
       <div ref={visRef} id="VisualiserContainer">
         <GraphVisualiser graphData={graphData} selectedObject={selectedObject}
-         dimensions={graphDimensions} focusedNode={selectedObject} />
+         dimensions={graphDimensions} focusedNode={selectedObject} selectObject={setSelectedObject} />
       </div>
       <div id="InfoPanelContainer">
-        <InfoPanel graphData={graphData} selectObject={setSelectedObject} />
+        <InfoPanel selectedObject={selectedObject} graphData={graphData} selectObject={setSelectedObject} />
       </div>
       <div id="EditorContainer">
         <EditorPanel />

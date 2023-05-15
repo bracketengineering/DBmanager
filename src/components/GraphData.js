@@ -33,12 +33,7 @@ export default class GraphData {
   }
 
   getNodeJSON(nodeID) {
-    this._originalData.forEach(node => {
-      if (node.id == nodeID) {
-        return node;
-      }
-    })
-    return null;
+    return this._originalData.find((value, number, index) => value.id == nodeID)
   }
 
 }
