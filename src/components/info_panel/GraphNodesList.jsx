@@ -1,24 +1,6 @@
 import './styles/GraphObjects.css';
 
 export default function GraphNodesList({ graphData, selectObject }) {
-  const TEST_DATA = [
-    { id: 0, name: "Will" },
-    { id: 1, name: "Xav" },
-    { id: 2, name: "George" },
-    { id: 0, name: "Will" },
-    { id: 1, name: "Xav" },
-    { id: 2, name: "George" },
-    { id: 0, name: "Will" },
-    { id: 1, name: "Xav" },
-    { id: 2, name: "George" },
-    { id: 0, name: "Will" },
-    { id: 1, name: "Xav" },
-    { id: 2, name: "George" },
-    { id: 0, name: "Will" },
-    { id: 1, name: "Xav" },
-    { id: 2, name: "George" },
-  ]
-
   if (graphData) return (
     <div id="GraphObjects">
         <table id="GraphObjectsTable">

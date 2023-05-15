@@ -1,24 +1,6 @@
 import './styles/GraphObjects.css';
 
 export default function GraphEdgesList({ graphData, selectObject }) {
-  const TEST_DATA = [
-    { id: 0, name: "Will" },
-    { id: 1, name: "Xav" },
-    { id: 2, name: "George" },
-    { id: 0, name: "Will" },
-    { id: 1, name: "Xav" },
-    { id: 2, name: "George" },
-    { id: 0, name: "Will" },
-    { id: 1, name: "Xav" },
-    { id: 2, name: "George" },
-    { id: 0, name: "Will" },
-    { id: 1, name: "Xav" },
-    { id: 2, name: "George" },
-    { id: 0, name: "Will" },
-    { id: 1, name: "Xav" },
-    { id: 2, name: "George" },
-  ]
-
   if (graphData) return (
     <div id="GraphObjects">
         <table id="GraphObjectsTable">
@@ -31,9 +13,12 @@ export default function GraphEdgesList({ graphData, selectObject }) {
           </thead>
           <tbody>
             {graphData.getEdges().map((item, index) => (
-              <tr onClick={() => selectObject(item.id)} key={index}>
+              <tr onClick={() => selectObject(
+                {focusedNodeId: item.target,
+                 object: item}
+              )} key={index}>
                 <td>{item.id.slice(0, 4)}..</td>
-                <td>{item.source}</td>
+                <td>{item.sourceName}</td>
                 <td>{item.target}</td>
               </tr>
             ))}

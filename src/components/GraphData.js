@@ -7,7 +7,10 @@ export default class GraphData {
     });
     const links = [];
     data.map(nodeInfo => {
-      nodeInfo.outgoingEdges.forEach(edge => links.push(edge));
+      nodeInfo.outgoingEdges.forEach(edge => { 
+        edge.sourceName = nodeInfo.properties.name;
+        links.push(edge);
+      })
     })
 
     this._links = links;
@@ -35,7 +38,7 @@ export default class GraphData {
         return node;
       }
     })
-    return {};
+    return null;
   }
 
 }
