@@ -48,7 +48,11 @@
   align-items: stretch;
   flex-direction: column;
   width: 35%;
-  padding: 1em;
+  padding: .5em;
+  overflow: auto; /* Now the container will show a scrollbar when the content overflows */
+  max-height: 100%; /* Prevents the div from stretching vertically beyond its container */
+  max-width: 100%;
 }
+
 
 /* END JSON VIEWER STYLES */

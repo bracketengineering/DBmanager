@@ -8,11 +8,7 @@ export default function InfoPanel({ graphData, selectObject }) {
     <>
       <GraphPreferencesPanel />
       <GraphObjectsPanel graphData={graphData} selectObject={selectObject} />
-      <div id="JSONContainer"> 
-        <div className="PanelHeader">
-          <p>JSON Viewer</p>
-        </div>
-      </div>
+      <JsonViewer data={graphData}></JsonViewer>
     </>
   );
 };
