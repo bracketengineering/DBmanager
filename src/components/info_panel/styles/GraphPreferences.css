@@ -1,0 +1,45 @@
+#GraphPreferences {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: #262626;
+  color: white;
+  overflow-y: scroll;
+}
+
+/* Scrollbar */
+#GraphPreferences::-webkit-scrollbar {
+  width: 1ex;
+}
+
+/* Scroll Progress Bar */
+#GraphPreferences::-webkit-scrollbar-track {
+  background: #262626;
+}
+
+/* Draggable Handle */
+#GraphPreferences::-webkit-scrollbar-thumb {
+  background: #191919;
+  -webkit-border-radius: 5ex;
+}
+
+/* Handle on hover */
+#GraphPreferences::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+#GraphPreferencesTable {
+  table-layout: auto;
+  height: 100%;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#GraphPreferencesTable td, th {
+  padding: 5px;
+  border-top: 1px solid white;
+}
+
+#GraphPreferencesTable td {
+  padding-left: 10px;
+}

@@ -1,0 +1,49 @@
+#GraphObjects {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: #262626;
+  color: white;
+  overflow-y: scroll;
+}
+
+/* Scrollbar */
+#GraphObjects::-webkit-scrollbar {
+  width: 1ex;
+}
+
+/* Scroll Progress Bar */
+#GraphObjects::-webkit-scrollbar-track {
+  background: #262626;
+}
+
+/* Draggable Handle */
+#GraphObjects::-webkit-scrollbar-thumb {
+  background: #191919;
+  -webkit-border-radius: 5ex;
+}
+
+/* Handle on hover */
+#GraphObjects::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+#GraphObjectsTable {
+  table-layout: auto;
+  height: 100%;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#GraphObjectsTable td, th {
+  padding: 5px;
+  border-top: 1px solid white;
+}
+
+#GraphObjectsTable td {
+  padding-left: 10px;
+}
+
+#GraphObjectsTable tr:hover {
+  background: #313131;
+}

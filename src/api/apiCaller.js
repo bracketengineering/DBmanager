@@ -18,7 +18,7 @@ export default class APICaller {
         return new Promise( (resolve, reject) => {
             axios.post(this.API_URL+methodPath, data)
             .then((response) => {
-                resolve(response);
+                resolve(response.data.body);
             })
             .catch(error => {
                 console.log("ERROR Generic Post Call:", error);

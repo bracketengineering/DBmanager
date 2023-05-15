@@ -1,0 +1,44 @@
+/* BEGIN GRAPH PREFERENCES STYLES */
+
+#PreferencesContainer {
+  border-right: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 25%;
+}
+
+/* END GRAPH PREFERENCES STYLES */
+
+/* BEGIN OBJECT LIST STYLES */
+
+#ObjectListContainer {
+  display: grid;
+  grid-template-rows: 10% 90%;
+  border-right: 1px solid black;
+  width: 40%;
+}
+
+#ObjectListTabs {
+  display: flex;
+  align-items: center;
+}
+
+.PanelTab {
+  color: white;
+  text-align: center;
+  background-color: #262626;
+}
+
+/* END OBJECT LIST STYLES */
+
+/* BEGIN JSON VIEWER STYLES */
+
+#JSONContainer {
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  width: 35%;
+}
+
+/* END JSON VIEWER STYLES */

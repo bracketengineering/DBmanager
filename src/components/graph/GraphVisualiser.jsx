@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Graph } from "react-d3-graph";
 
 
-export default function GraphVisualiser({ data, dimensions }) {
+export default function GraphVisualiser({ data, dimensions, focusedNode }) {
   const [parsedData, setParsedData] = useState(null);
 
   useEffect(() => {
@@ -23,11 +23,21 @@ export default function GraphVisualiser({ data, dimensions }) {
     }
   }, [data])
 
+  useEffect(() => {
+    if (parsedData) {
+      console.log(`FOCUSING NODE: ${focusedNode}`);
+      let newData = Object.assign({}, parsedData);
+      newData.focusedNodeId = focusedNode;
+      setParsedData(newData);
+    }
+  }, [focusedNode])
+
   const graphConfig = {
     nodeHighlightBehavior: true,
     width: dimensions.width,
     height: dimensions.height,
     initialZoom: 3,
+    directed: true,
     d3: {
       gravity: -50,
     },

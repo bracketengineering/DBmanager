@@ -1,3 +1,7 @@
+body {
+  font-family: "Lucida Console", monospace;
+}
+
 #FullWidthContainer {
   width: 100vw;
   height: 100vh;
@@ -5,48 +9,49 @@
 
 #ToolPanel {
   display: grid;
+  box-sizing: border-box;
   height: 100%;
   width: 100%;
   grid-template-columns: 60% 40%;
   grid-template-rows: 60% 40%;
   grid-template-areas: 
     "visualiser editor"
-    "viewer editor";
+    "infopanel editor";
   background-color: #1e1e1e;
 }
 
 #VisualiserContainer {
   grid-area: visualiser;
-  border-right: 1px solid #0d0d0d;
-  border-bottom: 1px solid #0d0d0d;
-  background-color: #262626;
+  background-color: #212121;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
-#ViewerContainer {
-  grid-area: viewer;
-  border-right: 1px solid #0d0d0d;
-  background-color: #262626;
+#InfoPanelContainer {
+  grid-area: infopanel;
+  background-color: #212121;
+  display: flex;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
 }
 
 #EditorContainer {
   grid-area: editor;
+  background-color: #212121;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid black;
+}
+
+.PanelHeader {
+  display: flex;
+  align-items: center;
+  max-width: 50%;
+  max-height: 10%;
   background-color: #262626;
-}
-
-#FeatureViewer {
-  display: grid;
-  grid-template-columns: 30% 40% 30%;
-  height: 100%;
-  width: 100%;
-}
-
-#PreferencesContainer,
-#FeatureListContainer,
-#JSONViewer {
-  background-color: #262626;
-  border-right: 1px solid #0d0d0d;
-}
-
-#JSONViewer {
-  border-right: none;
+  color: white;
+  font-size: large;
+  font-weight: 400;
+  padding: 1px 5px;
+  padding-left: 1ex;
 }
