@@ -10,7 +10,8 @@ function CustomNode(node) {
     'meal': '#32CD32',
     'ingredient': '#FF6347',
     'supercategory': '#FFA500',
-    'category': '#9370DB'
+    'category': '#9370DB',
+    'nutrient': ''
   }
   const colour = node.nodeType ? mapping[node.nodeType] : '#bbb';
   return (
