@@ -8,7 +8,7 @@ export default function GraphVisualiser({ data, dimensions, focusedNode }) {
   useEffect(() => {
     if (data) {
       const nodes = data.map(nodeInfo => {
-        return { id: nodeInfo.id, label: nodeInfo.label }
+        return { id: nodeInfo.id, label: nodeInfo.properties.name }
       });
       const links = [];
       data.map(nodeInfo => {
