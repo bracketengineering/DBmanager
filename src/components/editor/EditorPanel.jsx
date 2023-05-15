@@ -2,16 +2,7 @@ import "./EditorPanel.css";
 
 export default function EditorPanel({editingMode, setEditingMode}) {
 
-  // const getInfo = (object, keys = []) => {
-  //   let info = [];
-  //   for (let key in object) {
-  //     if(typeof(object[key]) === 'object') {
-  //       info = info.concat(getInfo(object[key], keys.concat(key)))
-  //     } else {
-        
-  //     }
-  //   }
-  // }
+  
 
   /* 
   <PropertyForm key={key} updateProperty={func: updateProperty}> (When user input changes value,
