@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react";
 import { Graph } from "react-d3-graph";
 
+
 export default function GraphVisualiser({ data, dimensions }) {
   const [parsedData, setParsedData] = useState(null);
+
+  const [graphData, setGraphData] = useState([]);
+  const [nodes, setNodes] = useState([]);
+  const [links, setLinks] = useState([]);
 
   useEffect(() => {
     if (data) {
