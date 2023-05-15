@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default class APICaller {
     constructor() {
-        this.API_URL = 'https://9juqol5qb1.execute-api.eu-west-2.amazonaws.com/v2';
+        this.API_URL = 'https://9juqol5qb1.execute-api.eu-west-2.amazonaws.com/v1';
     }
 
     /*---------------------------
@@ -36,7 +36,7 @@ export default class APICaller {
             console.log(this.API_URL+methodPath);
             axios.get(this.API_URL+methodPath)
                 .then((response) => {
-                    resolve(response);
+                    resolve(response.data.body);
                 })
                 .catch(error => {
                     console.log("ERROR Generic Get Call:", error);

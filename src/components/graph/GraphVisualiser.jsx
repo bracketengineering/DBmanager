@@ -1,31 +1,26 @@
+import { useEffect, useState } from "react";
 import { Graph } from "react-d3-graph";
-import { useEffect } from "react";
-import APICaller from "../../api/apiCaller";
 
-export default function GraphVisualiser({ dimensions }) {
-  const api = new APICaller();
+export default function GraphVisualiser({ data, dimensions }) {
+  const [parsedData, setParsedData] = useState(null);
 
   useEffect(() => {
-    api.getAllGraphData().then(response => console.log(JSON.stringify(response))).catch(err => console.log(err))
-  }, [])
+    if (data) {
+      const nodes = data.map(nodeInfo => {
+        return { id: nodeInfo.id, label: nodeInfo.label }
+      });
+      const links = [];
+      data.map(nodeInfo => {
+        nodeInfo.outgoingEdges.forEach(edge => links.push(edge));
+      })
 
-  const data = {
-    nodes: [{ id: "Harry" }, { id: "Sally" }, { id: "Alice" }, { id: "Xav" }, { id: "Will" }, { id: "George" }, { id: "Poo" }, { id: "Cum" }, { id: "L" }],
-    links: [
-      { source: "Harry", target: "Sally" },
-      { source: "Harry", target: "Alice" },
-      { source: "Harry", target: "Xav" },
-      { source: "Harry", target: "Poo" },
-      { source: "George", target: "Cum" },
-      { source: "George", target: "Poo" },
-      { source: "George", target: "L" },
-      { source: "Xav", target: "George" },
-      { source: "Xav", target: "Sally" },
-      { source: "Will", target: "Poo" },
-      { source: "Will", target: "Alice" },
-      { source: "Alice", target: "Poo" },
-    ],
-  };
+      const result = {}
+      result.nodes = nodes;
+      result.links = links;
+      console.log(result);
+      setParsedData(result);
+    }
+  }, [data])
 
   const graphConfig = {
     nodeHighlightBehavior: true,
@@ -40,6 +35,7 @@ export default function GraphVisualiser({ dimensions }) {
       color: "lightgreen",
       size: 120,
       highlightStrokeColor: "blue",
+      labelProperty: "label",
     },
     link: {
       highlightColor: "lightblue",
@@ -57,14 +53,14 @@ export default function GraphVisualiser({ dimensions }) {
 
   return (
     <>
-      {console.log(dimensions)}
-      <Graph
-        id="graph-id" // id is mandatory
-        data={data}
-        config={graphConfig}
-        onClickNode={onClickNode}
-        onClickLink={onClickLink}
-      />
+      {parsedData ?
+        <Graph
+          id="graph-id"
+          data={parsedData}
+          config={graphConfig}
+          onClickNode={onClickNode}
+          onClickLink={onClickLink}
+        /> : <></>}
     </>
   );
 }
