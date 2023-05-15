@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/DBmanager/static/css/main.c0904004.css",
-    "main.js": "/DBmanager/static/js/main.09a2d890.js",
+    "main.css": "/DBmanager/static/css/main.fcbaba4a.css",
+    "main.js": "/DBmanager/static/js/main.dd9884cc.js",
     "static/js/787.e1b40d49.chunk.js": "/DBmanager/static/js/787.e1b40d49.chunk.js",
     "index.html": "/DBmanager/index.html",
-    "main.c0904004.css.map": "/DBmanager/static/css/main.c0904004.css.map",
-    "main.09a2d890.js.map": "/DBmanager/static/js/main.09a2d890.js.map",
+    "main.fcbaba4a.css.map": "/DBmanager/static/css/main.fcbaba4a.css.map",
+    "main.dd9884cc.js.map": "/DBmanager/static/js/main.dd9884cc.js.map",
     "787.e1b40d49.chunk.js.map": "/DBmanager/static/js/787.e1b40d49.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c0904004.css",
-    "static/js/main.09a2d890.js"
+    "static/css/main.fcbaba4a.css",
+    "static/js/main.dd9884cc.js"
   ]
 }
