@@ -48,6 +48,7 @@
   align-items: stretch;
   flex-direction: column;
   width: 35%;
+  padding: 1em;
 }
 
 /* END JSON VIEWER STYLES */

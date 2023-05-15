@@ -15,9 +15,9 @@ function CustomNode(node) {
   const colour = node.nodeType ? mapping[node.nodeType] : '#bbb';
   return (
       <div id="CustomNode">
-        <span class="dot" style={{backgroundColour: colour}}>
-          {node.nodeType}
-        </span>
+        <div class="dot" style={{backgroundColor: colour}}>
+          <p>{node.nodeType}</p>
+        </div>
       </div>
  
   );

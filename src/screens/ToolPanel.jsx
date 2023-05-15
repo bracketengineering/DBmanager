@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import InfoPanel from "../components/info_panel/InfoPanel";
 import APICaller from "../api/apiCaller";
 import EditorPanel from "../components/editor/EditorPanel";
+import GraphData from "../components/GraphData";
 
 // TODO: FIX UI WITH FLIXBOX
 
@@ -13,14 +14,14 @@ export default function ToolPanel() {
   const [loading, setLoading] = useState(false);
   const [graphData, setGraphData] = useState(null);
   const [graphDimensions, setGraphDimensions] = useState({ width: 800, height: 400 });
-  const [selectedNode, setSelectedNode] = useState("");
+  const [selectedObject, setSelectedObject] = useState({});
 
   useEffect(() => {
     if (!loading) {
       setLoading(true);
       api.getAllGraphData().then(response => {
-        console.log(response)
-        setGraphData(response);
+        const data = new GraphData(response);
+        setGraphData(data);
       }).catch(err => console.log(err))
     }
   }, [])
@@ -43,10 +44,11 @@ export default function ToolPanel() {
   return (
     <div id="ToolPanel">
       <div ref={visRef} id="VisualiserContainer">
-        <GraphVisualiser data={graphData} dimensions={graphDimensions} focusedNode={selectedNode} />
+        <GraphVisualiser graphData={graphData} selectedObject={selectedObject}
+         dimensions={graphDimensions} focusedNode={selectedObject} />
       </div>
       <div id="InfoPanelContainer">
-        <InfoPanel graphData={graphData} selectNode={setSelectedNode} />
+        <InfoPanel graphData={graphData} selectObject={setSelectedObject} />
       </div>
       <div id="EditorContainer">
         <EditorPanel />
