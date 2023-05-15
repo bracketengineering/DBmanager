@@ -14,7 +14,7 @@ export default function ToolPanel() {
   const [loading, setLoading] = useState(false);
   const [graphData, setGraphData] = useState(null);
   const [graphDimensions, setGraphDimensions] = useState({ width: 800, height: 400 });
-  const [selectedNode, setSelectedNode] = useState("");
+  const [selectedObject, setSelectedObject] = useState({});
 
   useEffect(() => {
     if (!loading) {
@@ -44,11 +44,11 @@ export default function ToolPanel() {
   return (
     <div id="ToolPanel">
       <div ref={visRef} id="VisualiserContainer">
-        <GraphVisualiser graphData={graphData} selectNode={setSelectedNode}
-         dimensions={graphDimensions} focusedNode={selectedNode} />
+        <GraphVisualiser graphData={graphData} selectedObject={selectedObject}
+         dimensions={graphDimensions} focusedNode={selectedObject} />
       </div>
       <div id="InfoPanelContainer">
-        <InfoPanel graphData={graphData} selectNode={setSelectedNode} />
+        <InfoPanel graphData={graphData} selectObject={setSelectedObject} />
       </div>
       <div id="EditorContainer">
         <EditorPanel />

@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { Graph } from "react-d3-graph";
 import CustomNode from "./CustomNode";
 
-export default function GraphVisualiser({ selectNode, graphData, dimensions, focusedNode }) {
+export default function GraphVisualiser({ selectObject, graphData, dimensions, selectedObject }) {
   const [parsedData, setParsedData] = useState(null);
 
   // Extract data needed from data returned from Neptune
   useEffect(() => {
     if (graphData) {
-      const parsedData = graphData.getGraphData(focusedNode);
+      const parsedData = graphData.getGraphData(selectedObject.focusedNodeId);
       setParsedData(parsedData);
     }
   }, [graphData])
@@ -16,10 +16,10 @@ export default function GraphVisualiser({ selectNode, graphData, dimensions, foc
   // Focus on a node when clicked in the objects list
   useEffect(() => {
     if (parsedData) {
-      let newData = graphData.getGraphData(focusedNode);
+      let newData = graphData.getGraphData(selectedObject.focusedNodeId);
       setParsedData(newData);
     }
-  }, [focusedNode])
+  }, [selectedObject])
 
   const graphConfig = {
     nodeHighlightBehavior: true,
@@ -46,7 +46,7 @@ export default function GraphVisualiser({ selectNode, graphData, dimensions, foc
   };
 
   const onClickNode = function (nodeId) {
-    selectNode(nodeId);
+    selectObject(nodeId);
   };
 
   const onClickLink = function (source, target) {
