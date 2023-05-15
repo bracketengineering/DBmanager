@@ -2,13 +2,15 @@ import "./EditorPanel.css";
 
 export default function EditorPanel() {
   return (
-    <>
-      <div className="PanelHeader">
-        <p>Editor</p>
+    <div id="EditorPanel">
+      <div id="PanelTabsContainer">
+        <div className="PanelTab selectedTab halfTab">
+          <p>Preferences</p>
+        </div>
       </div>
-      <div id="EditorPanel">
+      <div id="ObjectEditor">
         
       </div>
-    </>
+    </div>
   );
 };

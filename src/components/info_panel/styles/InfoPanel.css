@@ -34,23 +34,3 @@
 
 /* END JSON VIEWER STYLES */
 
-#PanelTabsContainer {
-  display: flex;
-  align-items: center;
-}
-
-.PanelTab {
-  color: white;
-  text-align: left;
-  padding-left: 1em;
-  flex-grow: 1;
-  background-color: #212121;
-}
-
-.selectedTab {
-  background-color: #262626;
-}
-
-.PanelTab:hover {
-  background-color: #313131;
-}

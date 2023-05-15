@@ -8,16 +8,16 @@ export default function GraphObjectsPanel({ graphData, selectObject }) {
   return (
     <div id="ObjectListContainer">
       <div id="PanelTabsContainer">
-        <div className={currentTab == "nodes" ? "PanelTab selectedTab": "PanelTab"}
+        <div className={currentTab === "nodes" ? "PanelTab selectedTab": "PanelTab"}
          onClick={() => setCurrentTab('nodes')}>
           <p>Nodes</p>
         </div>
-        <div className={currentTab == "edges" ? "PanelTab selectedTab": "PanelTab"}
+        <div className={currentTab === "edges" ? "PanelTab selectedTab": "PanelTab"}
          onClick={() => setCurrentTab('edges')}>
           <p>Edges</p>
         </div>
       </div>
-      { currentTab == "nodes" ? 
+      { currentTab === "nodes" ? 
       <GraphNodesList graphData={graphData} selectObject={selectObject} />
       : <GraphEdgesList graphData={graphData} selectObject={selectObject} /> }
     </div>

@@ -1,6 +1,14 @@
 #EditorPanel {
+  display: grid;
+  grid-template-rows: 1fr 9fr;
+  border-right: 1px solid black;
+  width: 100%;
+}
+
+#ObjectEditor {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   background-color: #262626;
+  color: white;
 }

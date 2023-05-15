@@ -6,7 +6,7 @@ export default class GraphData {
       return { id: nodeInfo.id, nodeType: nodeInfo.label, name: nodeInfo.properties.name }
     });
     const links = [];
-    data.map(nodeInfo => {
+    data.forEach(nodeInfo => {
       nodeInfo.outgoingEdges.forEach(edge => { 
         edge.sourceName = nodeInfo.properties.name;
         let targetNode = this.getNodeJSON(edge.target);
@@ -35,7 +35,7 @@ export default class GraphData {
   }
 
   getNodeJSON(nodeID) {
-    return this._originalData.find((value, number, index) => value.id == nodeID)
+    return this._originalData.find((value, number, index) => value.id === nodeID)
   }
 
 }

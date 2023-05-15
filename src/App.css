@@ -22,14 +22,14 @@ body {
 
 #VisualiserContainer {
   grid-area: visualiser;
-  background-color: #212121;
+  background-color: #191919;
   border-right: 1px solid black;
   border-bottom: 1px solid black;
 }
 
 #InfoPanelContainer {
   grid-area: infopanel;
-  background-color: #212121;
+  background-color: #262626;
   display: flex;
   border-right: 1px solid black;
   border-top: 1px solid black;
@@ -37,21 +37,34 @@ body {
 
 #EditorContainer {
   grid-area: editor;
-  background-color: #212121;
+  background-color: #191919;
   display: flex;
-  flex-direction: column;
-  border-left: 1px solid black;
 }
 
-.PanelHeader {
+#PanelTabsContainer {
   display: flex;
   align-items: center;
-  max-width: 50%;
-  max-height: 10%;
-  background-color: #262626;
+}
+
+.PanelTab {
   color: white;
-  font-size: large;
-  font-weight: 400;
-  padding: 1px 5px;
-  padding-left: 1ex;
+  display: flex;
+  text-align: left;
+  align-items: center;
+  padding-left: 1em;
+  flex-grow: 1;
+  height: 100%;
+  background-color: #191919;
+}
+
+.selectedTab {
+  background-color: #262626;
+}
+
+.halfTab {
+  max-width: 50%;
+}
+
+.PanelTab:hover {
+  background-color: #313131;
 }
