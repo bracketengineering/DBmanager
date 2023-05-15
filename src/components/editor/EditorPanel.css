@@ -1,14 +1,104 @@
 #EditorPanel {
-  display: grid;
-  grid-template-rows: 1fr 9fr;
-  border-right: 1px solid black;
-  width: 100%;
-}
-
-#ObjectEditor {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  overflow-y: scroll;
   background-color: #262626;
-  color: white;
+  color: #fff;
 }
+
+/* Scrollbar */
+#EditorPanel::-webkit-scrollbar {
+  width: 1ex;
+}
+
+/* Scroll Progress Bar */
+#EditorPanel::-webkit-scrollbar-track {
+  background: #262626;
+}
+
+/* Draggable Handle */
+#EditorPanel::-webkit-scrollbar-thumb {
+  background: #191919;
+  -webkit-border-radius: 5ex;
+}
+
+/* Handle on hover */
+#EditorPanel::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+#EditorPanel input[type="text"],
+#EditorPanel .dropdown {
+  margin: 0;
+  padding: 5px;
+  width: 100%;
+  background-color: #333;
+  color: #fff; 
+  border: 1px solid #555;
+  border-radius: 0;
+}
+
+.object-title {
+  margin-left: 20px;
+}
+
+.form-button {
+  margin: 10px 0;
+  margin-right: 10px;
+  margin-left: 10px;
+  padding: 10px 15px;
+  background-color: #111111;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+  background-color: #4a4a4a;
+}
+
+/* collapsible components */
+.Collapsible__toggle {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  text-align: left;
+  outline: none;
+  transition: background-color 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-direction: row-reverse;
+  border-radius: 0; 
+  margin: 0; 
+}
+
+.Collapsible__toggle:hover {
+  background-color: #4a4a4a;
+}
+
+.Collapsible__arrow {
+  margin-left: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.Collapsible__arrow.open {
+  transform: rotate(90deg);
+}
+
+.Collapsible__content {
+  background-color: #262626;
+  padding: 10px;
+  transition: max-height 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.property-form-header {
+  margin-top: 10px;
+}
+

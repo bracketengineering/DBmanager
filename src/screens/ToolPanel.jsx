@@ -55,10 +55,10 @@ export default function ToolPanel() {
          dimensions={graphDimensions} focusedNode={selectedObject} selectObject={setSelectedObject} />
       </div>
       <div id="InfoPanelContainer">
-        <InfoPanel selectedObject={selectedObject} graphData={graphData} selectObject={setSelectedObject} />
+        <InfoPanel selectedObject={selectedObject.object} graphData={graphData} selectObject={setSelectedObject} />
       </div>
       <div id="EditorContainer">
-        <EditorPanel editingMode={editingMode} setEditingMode={setEditingMode} />
+        <EditorPanel editingMode={editingMode} setEditingMode={setEditingMode} data={selectedObject.object} type={selectedObject.label}/>
       </div>
     </div>
   );
