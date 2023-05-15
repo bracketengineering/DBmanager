@@ -1,0 +1,20 @@
+/* Scrollbar */
+#JSONContainer::-webkit-scrollbar {
+  width: 1ex;
+}
+
+/* Scroll Progress Bar */
+#JSONContainer::-webkit-scrollbar-track {
+  background: #262626;
+}
+
+/* Draggable Handle */
+#JSONContainer::-webkit-scrollbar-thumb {
+  background: #191919;
+  -webkit-border-radius: 5ex;
+}
+
+/* Handle on hover */
+#JSONContainer::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

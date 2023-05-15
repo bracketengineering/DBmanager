@@ -18,6 +18,20 @@
   width: 40%;
 }
 
+/* END OBJECT LIST STYLES */
+
+/* BEGIN JSON VIEWER STYLES */
+
+#JSONContainer {
+  display: grid;
+  grid-template-rows: 1fr 9fr;
+  border-right: 1px solid black;
+  width: 40%;
+  overflow-y: auto;
+}
+
+/* END JSON VIEWER STYLES */
+
 #PanelTabsContainer {
   display: flex;
   align-items: center;
@@ -38,21 +52,3 @@
 .selectedTab {
   background-color: #262626;
 }
-
-/* END OBJECT LIST STYLES */
-
-/* BEGIN JSON VIEWER STYLES */
-
-#JSONContainer {
-  display: flex;
-  align-items: stretch;
-  flex-direction: column;
-  width: 35%;
-  padding: .5em;
-  overflow: auto; /* Now the container will show a scrollbar when the content overflows */
-  max-height: 100%; /* Prevents the div from stretching vertically beyond its container */
-  max-width: 100%;
-}
-
-
-/* END JSON VIEWER STYLES */
