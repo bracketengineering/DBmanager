@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Graph } from "react-d3-graph";
-
+import CustomNode from "./CustomNode";
 
 export default function GraphVisualiser({ data, dimensions, focusedNode }) {
   const [parsedData, setParsedData] = useState(null);
@@ -8,7 +8,7 @@ export default function GraphVisualiser({ data, dimensions, focusedNode }) {
   useEffect(() => {
     if (data) {
       const nodes = data.map(nodeInfo => {
-        return { id: nodeInfo.id, label: nodeInfo.properties.name }
+        return { id: nodeInfo.id, nodeType: nodeInfo.label, name: nodeInfo.properties.name }
       });
       const links = [];
       data.map(nodeInfo => {
@@ -38,15 +38,16 @@ export default function GraphVisualiser({ data, dimensions, focusedNode }) {
     height: dimensions.height,
     initialZoom: 3,
     directed: true,
+    staticGraphWithDragAndDrop: true,
     d3: {
       gravity: -50,
     },
     node: {
       fontColor: "white",
       color: "lightgreen",
-      size: 120,
       highlightStrokeColor: "blue",
-      labelProperty: "label",
+      labelProperty: "name",
+      viewGenerator: CustomNode,
     },
     link: {
       highlightColor: "lightblue",

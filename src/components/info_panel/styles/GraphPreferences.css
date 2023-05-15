@@ -43,3 +43,7 @@
 #GraphPreferencesTable td {
   padding-left: 10px;
 }
+
+#GraphPreferencesTable tr:hover {
+  background: #313131;
+}

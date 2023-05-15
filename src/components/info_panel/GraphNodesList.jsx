@@ -1,6 +1,6 @@
-import './styles/GraphPreferences.css';
+import './styles/GraphObjects.css';
 
-export default function GraphPreferences() {
+export default function GraphNodesList({ data, selectNode }) {
   const TEST_DATA = [
     { id: 0, name: "Will" },
     { id: 1, name: "Xav" },
@@ -19,19 +19,21 @@ export default function GraphPreferences() {
     { id: 2, name: "George" },
   ]
 
-  return (
-    <div id="GraphPreferences">
-        <table id="GraphPreferencesTable">
+  if (data) return (
+    <div id="GraphObjects">
+        <table id="GraphObjectsTable">
           <thead>
             <tr>
-              <th>Option</th>
-              <th>Control</th>
+              <th>ID</th>
+              <th>Type</th>
+              <th>Name</th>
             </tr>
           </thead>
           <tbody>
-            {TEST_DATA.map((item, index) => (
-              <tr key={index}>
-                <td>{item.id}</td>
+            {data.map((item, index) => (
+              <tr onClick={() => selectNode(item.id)} key={index}>
+                <td>{item.id.slice(0, 4)}..</td>
+                <td>{item.label}</td>
                 <td>{item.name}</td>
               </tr>
             ))}

@@ -1,0 +1,26 @@
+import './styles/Graph.css';
+/**
+ * Component that renders a person's name and gender, along with icons
+ * representing if they have a driver license for bike and / or car.
+ * @param {Object} node component props to render.
+ */
+function CustomNode(node) {
+  const mapping = {
+    'user': '#1E90FF',
+    'meal': '#32CD32',
+    'ingredient': '#FF6347',
+    'supercategory': '#FFA500',
+    'category': '#9370DB'
+  }
+  const colour = node.nodeType ? mapping[node.nodeType] : '#bbb';
+  return (
+      <div id="CustomNode">
+        <span class="dot" style={{backgroundColour: colour}}>
+          {node.nodeType}
+        </span>
+      </div>
+ 
+  );
+}
+
+export default CustomNode;
