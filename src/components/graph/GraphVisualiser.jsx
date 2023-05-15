@@ -1,13 +1,31 @@
 import { Graph } from "react-d3-graph";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import APICaller from "../../api/apiCaller";
 
 export default function GraphVisualiser({ dimensions }) {
   const api = new APICaller();
 
+  const [graphData, setGraphData] = useState([]);
+  const [nodes, setNodes] = useState([]);
+  const [links, setLinks] = useState([]);
+
   useEffect(() => {
-    api.getAllGraphData().then(response => console.log(JSON.stringify(response))).catch(err => console.log(err))
+    api.getAllGraphData().then(response => {
+        setGraphData(response)
+        for(let node of graphData){
+          setNodes(nodes.concat(node));
+          //thinking could set object to outgoing links from the node object then iterate through each link to get souce and target
+          const linkArray = node.outgointEdges;
+          for(let link in linkArray)
+            setLinks(links.concat({[node.id]: link.target}))
+        }
+        
+      })
+      .catch(err => console.log(err))
+
   }, [])
+
+  
 
   const data = {
     nodes: [{ id: "Harry" }, { id: "Sally" }, { id: "Alice" }, { id: "Xav" }, { id: "Will" }, { id: "George" }, { id: "Poo" }, { id: "Cum" }, { id: "L" }],
