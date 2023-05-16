@@ -52,10 +52,10 @@ export default function ToolPanel() {
     <div id="ToolPanel">
       <div ref={visRef} id="VisualiserContainer">
         <GraphVisualiser graphData={graphData} selectedObject={selectedObject}
-         dimensions={graphDimensions} focusedNode={selectedObject} selectObject={setSelectedObject} />
+         dimensions={graphDimensions} focusedNode={selectedObject} selectObject={selectObject} />
       </div>
       <div id="InfoPanelContainer">
-        <InfoPanel selectedObject={selectedObject.object} graphData={graphData} selectObject={setSelectedObject} />
+        <InfoPanel selectedObject={selectedObject.object} graphData={graphData} selectObject={selectObject} />
       </div>
       <div id="EditorContainer">
         <EditorPanel editingMode={editingMode} setEditingMode={setEditingMode} data={selectedObject.object} type={selectedObject.object ? selectedObject.object.label : {}} graphData={graphData}/>
