@@ -42,6 +42,7 @@ const EditorPanel = ({ data = {}, type, setEditingMode, editingMode = false}) =>
   };
 
   const handleSubmit = () => {
+    console.log(dataBeingEdited);
     alert("You will now upload this data");
     setEditingMode(false);
   };
