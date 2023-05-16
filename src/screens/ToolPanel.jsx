@@ -58,7 +58,7 @@ export default function ToolPanel() {
         <InfoPanel selectedObject={selectedObject.object} graphData={graphData} selectObject={setSelectedObject} />
       </div>
       <div id="EditorContainer">
-        <EditorPanel editingMode={editingMode} setEditingMode={setEditingMode} data={selectedObject.object} type={selectedObject.label}/>
+        <EditorPanel editingMode={editingMode} setEditingMode={setEditingMode} data={selectedObject.object} type={selectedObject.object ? selectedObject.object.label : {}} graphData={graphData}/>
       </div>
     </div>
   );

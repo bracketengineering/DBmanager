@@ -4,9 +4,10 @@ import "./EditorPanel.css";
 import APICaller from "../../api/apiCaller";
 import LinkForm from './LinkForm';
 import SubPropertyForm from './SubPropertyForm';
+import GraphData from "../GraphData";
 
 
-const EditorPanel = ({ data = {}, type, setEditingMode, editingMode = false}) => {
+const EditorPanel = ({ data = {}, type = {}, setEditingMode, editingMode = false, graphData}) => {
   const api = new APICaller();
   const [dataBeingEdited, setDataBeingEdited] = useState(data);
 
@@ -41,9 +42,44 @@ const EditorPanel = ({ data = {}, type, setEditingMode, editingMode = false}) =>
     setEditingMode(false);
   };
 
-  const handleSubmit = () => {
-    console.log(dataBeingEdited);
-    alert("You will now upload this data");
+  const handleSubmit = async () => {
+    console.log("data to edit", dataBeingEdited);
+    console.log("data to edit", dataBeingEdited.properties.name);
+    console.log(type);
+    alert(JSON.stringify(dataBeingEdited));
+   
+      //const response = await api.updateNode(dataBeingEdited);
+    
+    /**
+     * API call works, however cannot read edge data for a node as each edge in the incoming and outgoing edges array is assigned a key of its index in the array and then the edge object as the value of the key
+     * therefore need to alter how we are storing edges in graphData or change the adminNeptuneClient.
+     * 
+     * we also need to check whether the type of the currently selected object is a node or edge. 
+     * Could do this by checking label (could be annoying when we add new labels) 
+     * or by something similar to the following 
+     * 
+     * if(graphData.getNodes().forEach((object) => {dataBeingEdited.id === object.id})) {
+     *    await api.updateNode(dataBeingEdited);
+     * }
+     * else if (graphData.getEdges().forEach((object) => {dataBeingEdited.id === object.id})) {
+     *    await api.updateEdge(dataBeingEdited);
+     * }
+     *
+     * 
+     * e.g. 
+     * 0: {
+        "id": "8cc39c21-c7d5-7e1c-6dc5-d8159f3dff8a",
+        "source": "a4c39bc0-3fb6-ec2f-139d-49b59a506f2f",
+        "label": "hasViewed",
+        "target": "fcc39bed-9895-9f3a-fd68-105a883bcf82",
+        "properties": {
+          "lastViewed": 1680276164497
+        },
+        "targetName": "Lebanese"
+        }
+     */
+  
+    
     setEditingMode(false);
   };
 
@@ -57,7 +93,7 @@ const EditorPanel = ({ data = {}, type, setEditingMode, editingMode = false}) =>
       )}
       {editingMode ?(
         <> <button className="form-button" onClick={handleCancel}>Cancel</button>
-        <button className="form-button" onClick={handleSubmit}>Submit</button> </>) : 
+        <button className="form-button" onClick={() => handleSubmit()}>Submit</button> </>) : 
         (<><button className="form-button" onClick={() => setEditingMode(true)}>Edit</button> </>
       )}
     </div>
