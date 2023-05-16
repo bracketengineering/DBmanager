@@ -53,7 +53,7 @@ export default function ToolPanel() {
     <div id="ToolPanel">
       <div ref={visRef} id="VisualiserContainer">
         <GraphVisualiser graphData={graphData} selectedObject={selectedObject}
-         dimensions={graphDimensions} focusedNode={selectedObject} selectObject={setSelectedObject} />
+         dimensions={graphDimensions} focusedNode={selectedObject} selectObject={selectObject} />
       </div>
       <div id="InfoPanelContainer">
         <InfoPanel 
