@@ -102,3 +102,17 @@
   margin-top: 10px;
 }
 
+.ButtonPanel {
+  display: flex;
+  justify-content: start;
+  align-items: center; 
+  padding: 10px; 
+}
+
+.ButtonPanel .form-button {
+  margin-right: 10px; 
+}
+
+.button-group .form-button:last-child {
+  margin-right: 0;
+}
