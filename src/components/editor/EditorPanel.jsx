@@ -46,27 +46,30 @@ const EditorPanel = ({ data = {}, type = "", setEditingMode, editingMode = false
 
   const handleSubmit = async () => {
     console.log("data to edit", dataBeingEdited);
-    console.log("data to edit", dataBeingEdited.properties.name);
+    
     console.log(type);
-    alert(JSON.stringify(dataBeingEdited));
+    //alert(JSON.stringify(dataBeingEdited));
    
       //const response = await api.updateNode(dataBeingEdited);
-    try{
-      // true if data is node
-      if (dataBeingEdited.properties.name) {
-        setType("node");
-        dataBeingEdited.incomingEdges = Object.values(dataBeingEdited.incomingEdges);
-        dataBeingEdited.outgoingEdges = Object.values(dataBeingEdited.outgoingEdges);
-        await api.updateNode(dataBeingEdited);
+
+    if((Object.keys(dataBeingEdited).length) > 0 ) {
+      try{
+        // true if data is node
+        if(dataBeingEdited.properties.name) {
+          setType("node");
+          dataBeingEdited.incomingEdges = Object.values(dataBeingEdited.incomingEdges);
+          dataBeingEdited.outgoingEdges = Object.values(dataBeingEdited.outgoingEdges);
+          await api.updateNode(dataBeingEdited);
+        } 
+        // returns true if data is edge
+        else if (dataBeingEdited.source) {
+          setType("edge");
+          await api.updateNode(dataBeingEdited);
+        }
+      } catch(error) {
+        alert("ERROR Updating Object: " + error);
       } 
-      // returns true if data is edge
-      else if (dataBeingEdited.source) {
-        setType("edge");
-        await api.updateNode(dataBeingEdited);
-      }
-    } catch(error) {
-      console.log("ERROR Updating Object:", error);
-    } 
+    } else { alert("No Object Selected")}
     setEditingMode(false);
   };
 
