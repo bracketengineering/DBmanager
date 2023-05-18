@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default class APICaller {
     constructor() {
-        this.API_URL = 'https://9juqol5qb1.execute-api.eu-west-2.amazonaws.com/v2';
+        this.API_URL = 'https://9juqol5qb1.execute-api.eu-west-2.amazonaws.com/v1';
     }
 
     /*---------------------------
@@ -69,7 +69,7 @@ export default class APICaller {
      * @param {Object} edge - edge object
      */
     removeEdge(edge) {
-        return this.#genericPost('/remove-edge', edge);
+        return this.#genericPost('/delete-edge', edge);
     }
 
     /**
@@ -96,7 +96,7 @@ export default class APICaller {
      * @param {Object} node - node object
      */
     removeNode(node) {
-        return this.#genericPost('/remove-node', node);
+        return this.#genericPost('/delete-node', node);
     }
 
     /**
