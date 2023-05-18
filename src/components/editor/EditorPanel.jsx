@@ -6,9 +6,10 @@ import LinkForm from './LinkForm';
 import SubPropertyForm from './SubPropertyForm';
 import GraphData from "../GraphData";
 import ButtonPanel from "./ButtonPanel";
+import { Graph } from "react-d3-graph";
 
 
-const EditorPanel = ({ data = {}, type = "", setEditingMode, editingMode = false, graphData, setType}) => {
+const EditorPanel = ({ data = {}, type = "", setEditingMode, editingMode = false, graphData, setType, setGraphData, GraphData}) => {
   const api = new APICaller();
   const [dataBeingEdited, setDataBeingEdited] = useState(data);
   const [showAddNodeOrEdgeForm, setShowAddNodeOrEdgeForm] = useState(false);
@@ -45,13 +46,11 @@ const EditorPanel = ({ data = {}, type = "", setEditingMode, editingMode = false
   };
 
   const handleSubmit = async () => {
-    console.log("data to edit", dataBeingEdited);
-    
-    console.log(type);
+    console.log(dataBeingEdited);
     //alert(JSON.stringify(dataBeingEdited));
    
       //const response = await api.updateNode(dataBeingEdited);
-
+    
     if((Object.keys(dataBeingEdited).length) > 0 ) {
       try{
         // true if data is node
@@ -81,6 +80,8 @@ const EditorPanel = ({ data = {}, type = "", setEditingMode, editingMode = false
         updateProperty={updateProperty}
         api={api}
         setEditingMode={setEditingMode}
+        setGraphData={setGraphData}
+        GraphData={GraphData}
       />
       <h1 className="object-title">{!(Object.keys(dataBeingEdited).length) <= 0 ? 
         (dataBeingEdited.properties.name ? dataBeingEdited.properties.name: "New Object"):''}</h1>

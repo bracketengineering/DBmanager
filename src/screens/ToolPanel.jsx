@@ -70,6 +70,8 @@ export default function ToolPanel() {
           setType={setTypeOfSelectedObject} 
           type={typeOfSelectedObject} 
           graphData={graphData}
+          setGraphData={setGraphData}
+          GraphData={GraphData}
         />
       </div>
     </div>

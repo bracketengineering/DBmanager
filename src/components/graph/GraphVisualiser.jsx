@@ -47,7 +47,7 @@ export default function GraphVisualiser({ selectObject, graphData, dimensions, s
 
   const onClickNode = function (nodeId) {
     const object = graphData.getNodeJSON(nodeId);
-    selectObject({focusedNodeId: nodeId, object: object});
+    selectObject({focusedNodeId: nodeId, object: object});   
   };
 
   const onClickLink = function (source, target) {

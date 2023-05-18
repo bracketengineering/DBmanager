@@ -1,6 +1,8 @@
+// refresh icon:  https://www.flaticon.com/free-icon/refresh_2805355?term=refresh&page=1&position=2&origin=tag&related_id=2805355
+
 import { node, edge } from './ObjectStructure';
 
-export default function ButtonPanel({ dataBeingEdited, setDataBeingEdited, updateProperty, api, setEditingMode}) {
+export default function ButtonPanel({ dataBeingEdited, setDataBeingEdited, updateProperty, api, setEditingMode, setGraphData, GraphData}) {
     const handleAddNode = () => {
         setDataBeingEdited({...node});
         setEditingMode(true);
@@ -31,8 +33,18 @@ export default function ButtonPanel({ dataBeingEdited, setDataBeingEdited, updat
         }
     }
 
+    const handleRefresh = () => {
+        api.getAllGraphData().then(response => {
+            const data = new GraphData(response);
+            setGraphData(data);
+          }).catch(err => console.log(err))
+    }
+
     return (
         <div className='ButtonPanel'>
+            <button className="form-button" onClick={() => handleRefresh()}>
+                Refresh
+            </button>
             <button className="form-button" onClick={() => handleAddNode()}>
                 Add Node
             </button>
@@ -43,7 +55,7 @@ export default function ButtonPanel({ dataBeingEdited, setDataBeingEdited, updat
                 Add Edge
             </button>
             <button className="form-button" onClick={async () => handleRemoveEdge()}>
-                Remove Node
+                Remove Edge
             </button>
         </div>
     )
