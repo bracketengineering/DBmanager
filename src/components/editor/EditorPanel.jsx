@@ -69,11 +69,13 @@ const EditorPanel = ({ data = {}, type = "", setEditingMode, editingMode = false
         else if (dataBeingEdited.source) {
           setType("edge");
           await api.updateEdge(dataBeingEdited);
+        } else {
+          alert("ERROR Updating Object: Invalid Object");
         }
       } catch(error) {
         alert("ERROR Updating Object: " + error);
       } 
-    } else { alert("No Object Selected")}
+    } else { alert("ERROR Updating Object: No Object Selected")}
     setEditingMode(false);
   };
 
