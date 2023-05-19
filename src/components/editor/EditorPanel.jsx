@@ -68,7 +68,7 @@ const EditorPanel = ({ data = {}, type = "", setEditingMode, editingMode = false
         // returns true if data is edge
         else if (dataBeingEdited.source) {
           setType("edge");
-          await api.updateNode(dataBeingEdited);
+          await api.updateEdge(dataBeingEdited);
         }
       } catch(error) {
         alert("ERROR Updating Object: " + error);
