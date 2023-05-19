@@ -91,7 +91,7 @@ const EditorPanel = ({ data = {}, type = "", setEditingMode, editingMode = false
         GraphData={GraphData}
         setLoading={setLoading}
       />
-      {<h1 className="object-title">{(Object.keys(dataBeingEdited).length > 0) ? 
+      {<h1 className="object-title">{(Object.keys(dataBeingEdited).length > 1) ? 
         (dataBeingEdited.properties.hasOwnProperty('name') ? dataBeingEdited.properties.name: "New Object"):''}</h1> }
       {type === 'edge' ? (
         <LinkForm edge={dataBeingEdited} updateProperty={updateProperty} />
