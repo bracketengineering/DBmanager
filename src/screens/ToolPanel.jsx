@@ -27,7 +27,7 @@ export default function ToolPanel() {
     } else {
       setFieldInput(newObject.nodeId);
     }
-  }
+  }//
 
   useEffect(() => {
     if (!loading) {
