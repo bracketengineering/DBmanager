@@ -2,7 +2,8 @@
 
 import { node, edge } from './ObjectStructure';
 
-export default function ButtonPanel({ dataBeingEdited, setDataBeingEdited, updateProperty, api, setEditingMode, setGraphData, GraphData}) {
+export default function ButtonPanel({ dataBeingEdited, setDataBeingEdited, updateProperty, api, setEditingMode, 
+    setGraphData, GraphData, setLoading}) {
     const handleAddNode = () => {
         setDataBeingEdited({...node});
         setEditingMode(true);
@@ -38,6 +39,8 @@ export default function ButtonPanel({ dataBeingEdited, setDataBeingEdited, updat
             const data = new GraphData(response);
             setGraphData(data);
           }).catch(err => console.log(err))
+        setLoading(false);
+        
     }
 
     return (

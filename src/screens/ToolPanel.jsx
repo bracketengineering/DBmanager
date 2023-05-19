@@ -80,6 +80,7 @@ export default function ToolPanel() {
           setSelectedField={setSelectedField}
           selectedField={selectedField}
           fieldInput={fieldInput}
+          setLoading={setLoading}
         />
       </div>
     </div>

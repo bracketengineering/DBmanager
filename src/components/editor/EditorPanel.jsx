@@ -10,7 +10,7 @@ import { Graph } from "react-d3-graph";
 
 
 const EditorPanel = ({ data = {}, type = "", setEditingMode, editingMode = false, graphData, 
-                          setType, setGraphData, GraphData, setSelectedField, selectedField, fieldInput}) => {
+                          setType, setGraphData, GraphData, setSelectedField, selectedField, fieldInput, setLoading}) => {
   const api = new APICaller();
   const [dataBeingEdited, setDataBeingEdited] = useState(data);
   
@@ -89,9 +89,10 @@ const EditorPanel = ({ data = {}, type = "", setEditingMode, editingMode = false
         setEditingMode={setEditingMode}
         setGraphData={setGraphData}
         GraphData={GraphData}
+        setLoading={setLoading}
       />
-      {/* <h1 className="object-title">{!(Object.keys(dataBeingEdited).length <= 0) ? 
-        (dataBeingEdited.properties.name ? dataBeingEdited.properties.name: "New Object"):''}</h1> */}
+      {<h1 className="object-title">{(Object.keys(dataBeingEdited).length > 0) ? 
+        (dataBeingEdited.properties.hasOwnProperty('name') ? dataBeingEdited.properties.name: "New Object"):''}</h1> }
       {type === 'edge' ? (
         <LinkForm edge={dataBeingEdited} updateProperty={updateProperty} />
       ) : (

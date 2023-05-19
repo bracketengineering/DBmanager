@@ -20,6 +20,7 @@ export default function PropertyForm({ objectKeys, value, updateProperty, editin
             onChange={handleInputChange}
             onClick={handleInputClick}
           />
+          {}
         </div>
       );
 }
