@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import "./EditorPanel.css";
 import APICaller from "../../api/apiCaller";
 import LinkForm from './LinkForm';
@@ -9,14 +9,19 @@ import ButtonPanel from "./ButtonPanel";
 import { Graph } from "react-d3-graph";
 
 
-const EditorPanel = ({ data = {}, type = "", setEditingMode, editingMode = false, graphData, setType, setGraphData, GraphData}) => {
+const EditorPanel = ({ data = {}, type = "", setEditingMode, editingMode = false, graphData, 
+                          setType, setGraphData, GraphData, setSelectedField, selectedField, fieldInput}) => {
   const api = new APICaller();
   const [dataBeingEdited, setDataBeingEdited] = useState(data);
-  const [showAddNodeOrEdgeForm, setShowAddNodeOrEdgeForm] = useState(false);
+  
 
   useEffect(() => {
     setDataBeingEdited(data);
   }, [data]);
+
+  useEffect(() => {
+    updateProperty(selectedField, fieldInput);
+  }, [fieldInput])
 
   /**
    * Iterates through array of objectKeys (the path to property). 
@@ -83,12 +88,17 @@ const EditorPanel = ({ data = {}, type = "", setEditingMode, editingMode = false
         setGraphData={setGraphData}
         GraphData={GraphData}
       />
-      <h1 className="object-title">{!(Object.keys(dataBeingEdited).length) <= 0 ? 
-        (dataBeingEdited.properties.name ? dataBeingEdited.properties.name: "New Object"):''}</h1>
+      {/* <h1 className="object-title">{!(Object.keys(dataBeingEdited).length <= 0) ? 
+        (dataBeingEdited.properties.name ? dataBeingEdited.properties.name: "New Object"):''}</h1> */}
       {type === 'edge' ? (
         <LinkForm edge={dataBeingEdited} updateProperty={updateProperty} />
       ) : (
-        <SubPropertyForm object={dataBeingEdited} updateProperty={updateProperty} editingMode={editingMode}/>
+        <SubPropertyForm 
+          object={dataBeingEdited} 
+          updateProperty={updateProperty} 
+          editingMode={editingMode} 
+          setSelectedField={setSelectedField}
+        />
       )}
       {editingMode ?(
         <> <button className="form-button" onClick={handleCancel}>Cancel</button>

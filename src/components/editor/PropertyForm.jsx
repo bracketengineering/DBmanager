@@ -1,7 +1,13 @@
-export default function PropertyForm({ objectKeys, value, updateProperty, editingMode }) {
+export default function PropertyForm({ objectKeys, value, updateProperty, editingMode, setSelectedField }) {
     const handleInputChange = (input) => {
         updateProperty(objectKeys, input.target.value);
       };
+    
+    const handleInputClick = () => {
+      if(editingMode) {
+        setSelectedField(objectKeys)
+      }
+    }
     
       return (
         <div key={objectKeys.join('_')} className="input-block">
@@ -12,6 +18,7 @@ export default function PropertyForm({ objectKeys, value, updateProperty, editin
             value={value}
             disabled={!editingMode} 
             onChange={handleInputChange}
+            onClick={handleInputClick}
           />
         </div>
       );

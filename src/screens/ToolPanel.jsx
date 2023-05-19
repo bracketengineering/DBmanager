@@ -17,10 +17,15 @@ export default function ToolPanel() {
   const [selectedObject, setSelectedObject] = useState({});
   const [editingMode, setEditingMode] = useState(false);
   const [typeOfSelectedObject, setTypeOfSelectedObject] = useState("");
+  const [selectedField, setSelectedField] = useState([]);
+  const [fieldInput, setFieldInput] = useState("");
+
 
   function selectObject(newObject) {
     if (!editingMode) {
       setSelectedObject(newObject);
+    } else {
+      setFieldInput(newObject.nodeId);
     }
   }
 
@@ -72,6 +77,9 @@ export default function ToolPanel() {
           graphData={graphData}
           setGraphData={setGraphData}
           GraphData={GraphData}
+          setSelectedField={setSelectedField}
+          selectedField={selectedField}
+          fieldInput={fieldInput}
         />
       </div>
     </div>
