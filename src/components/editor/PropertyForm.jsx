@@ -1,4 +1,5 @@
 export default function PropertyForm({ objectKeys, value, updateProperty, editingMode, setSelectedField }) {
+    console.log(objectKeys);
     const handleInputChange = (input) => {
         updateProperty(objectKeys, input.target.value);
       };
