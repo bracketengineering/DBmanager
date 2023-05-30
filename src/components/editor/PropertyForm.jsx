@@ -17,7 +17,7 @@ export default function PropertyForm({ objectKeys, value, updateProperty, editin
             className="DataInput"
             type="text"
             value={value}
-            disabled={!editingMode} 
+            disabled={((objectKeys[objectKeys.length - 1] === 'id') ? true :!editingMode)} 
             onChange={handleInputChange}
             onClick={handleInputClick}
           />

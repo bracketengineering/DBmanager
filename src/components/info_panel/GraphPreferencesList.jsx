@@ -20,13 +20,20 @@ export default function GraphPreferencesList({ graphData, selectObject }) {
       const searchData = filterResults
       const newSearch = new Fuse(searchData, options);
       setSearch(newSearch);
+      
+    }
+  }, [graphData, filterResults]);
+
+  useEffect(() => {
+    if(graphData) {
       setFilterResults(graphData.getNodes().filter((item => item.nodeType != "user")));
     }
   }, [graphData]);
 
+  //bac43416-68c5-42ba-291d-80101f764973
+
   const handleNodeTypeChange = (event) => {
     setNodeType(event.target.value);
-    const tempNodeType = 'all'
     const newGraphData = event.target.value === 'all' ? graphData.getNodes().filter((item => item.nodeType != "user"))
     : 
      graphData.getNodes().filter((item => item.nodeType === event.target.value));
