@@ -11,10 +11,11 @@ export default function NewEdgeForm({ setNewEdgeFormOpen, setNewPropertyFormOpen
   const [selectedField, setSelectedField] = useState(null);
   
   const handleSubmit = () => {
+    alert(JSON.stringify(newEdge));
     console.log(newEdge);
     api.addEdge(newEdge) 
       .then((response) => alert(JSON.stringify(response)))
-      .catch((error) => alert(JSON.stringify(error)));
+      .catch((error) => alert(JSON.stringify("ERROR" + error)));
     setNewEdgeFormOpen(false);
   };
 

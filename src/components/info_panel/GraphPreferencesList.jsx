@@ -24,7 +24,7 @@ export default function GraphPreferencesList({ setGraphData, graphData, selectOb
   }, [graphData, filterResults]);
 
   const handleNodeTypeChange = (event) => {
-    setNodeType(event.target.value)
+    setNodeType(event.target.value);
     const newGraphData = event.target.value === 'all' ? graphData.getNodes().filter((item => item.nodeType != "user"))
     : 
      graphData.getNodes().filter((item => item.nodeType === event.target.value));

@@ -17,11 +17,12 @@ export default function NewEdgePropertyForm({ setNewPropertyFormOpen, setNewEdge
   useEffect(() => {
       const newProperty = {
       properties: {
-        [formState.key]: formState.value,
+        [formState.key]: Number(formState.value),
       }
     };
     console.log("FORM STATE", formState);
     setNewEdge({...newEdge, ...newProperty});
+    //alert(JSON.stringify(newEdge));
   }, [formState]);
 
 
