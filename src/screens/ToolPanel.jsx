@@ -15,6 +15,7 @@ export default function ToolPanel() {
   const [loading, setLoading] = useState(false);
   const [graphData, setGraphData] = useState(null);
   const [search, setSearch] = useState(null);
+  //const [refresh, setRefresh] = useState(false);
   const [graphDimensions, setGraphDimensions] = useState({ width: 800, height: 400 });
   const [selectedObject, setSelectedObject] = useState({});
   const [editingMode, setEditingMode] = useState(false);
@@ -22,16 +23,7 @@ export default function ToolPanel() {
   const [selectedField, setSelectedField] = useState([]);
   const [fieldInput, setFieldInput] = useState("");
 
-  useEffect(() => {
-    const options = {
-      minMatchCharLength: 1,
-      threshold: 0.2,
-      keys: ["name"]
-    }
-    const searchData = graphData.getAllGraphData();
-    setSearch(new Fuse(searchData, options))
-  }, [graphData]);
-
+  
   function selectObject(newObject) {
     if (!editingMode) {
       setSelectedObject(newObject);
@@ -48,7 +40,8 @@ export default function ToolPanel() {
         setGraphData(data);
       }).catch(err => console.log(err))
     }
-  }, [])
+
+  }, [/*refresh*/]);
 
   useEffect(() => {
     function handleWindowResize() {
@@ -75,8 +68,9 @@ export default function ToolPanel() {
         <InfoPanel 
           setGraphData={setGraphData}
           graphData={graphData} 
-          selectObject={setSelectedObject} 
           search={search}
+          selectObject={selectObject}
+          selectedObject={selectedObject}
         />
       </div>
       <div id="EditorContainer">

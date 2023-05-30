@@ -1,4 +1,4 @@
-import Fuse from "fuse.js";
+//import Fuse from "fuse.js";
 
 export default class GraphData {
   constructor(data) {

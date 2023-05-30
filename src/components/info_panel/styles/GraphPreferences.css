@@ -4,47 +4,62 @@
   flex-grow: 1;
   background-color: #262626;
   color: white;
-  overflow-y: scroll;
+  overflow-y: hidden;
   align-items: center;
   padding: 5px;
-  justify-content: center;
+  
 }
 
 /* Scrollbar */
-#GraphPreferences::-webkit-scrollbar {
+#GraphPreferences::-webkit-scrollbar, #SearchResultList::-webkit-scrollbar {
   width: 1ex;
 }
 
 /* Scroll Progress Bar */
-#GraphPreferences::-webkit-scrollbar-track {
+#GraphPreferences::-webkit-scrollbar-track, #SearchResultList::-webkit-scrollbar-track {
   background: #262626;
 }
 
 /* Draggable Handle */
-#GraphPreferences::-webkit-scrollbar-thumb {
+#GraphPreferences::-webkit-scrollbar-thumb, #SearchResultList::-webkit-scrollbar-thumb {
   background: #191919;
   -webkit-border-radius: 5ex;
 }
 
 /* Handle on hover */
-#GraphPreferences::-webkit-scrollbar-thumb:hover {
+#GraphPreferences::-webkit-scrollbar-thumb:hover, #SearchResultList::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
 
 /* New Styles */
 #GraphPreferences select,
 #GraphPreferences input {
   margin: 0;
   padding: 5px;
-  width: 95%;
+  width: 90%;
   background-color: #333;
   color: #fff; 
   border: 1px solid #555;
   border-radius: 0;
 }
 
-
-
 #GraphPreferences label {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+}
+
+#SearchResult {
+  padding: 7px;
+  font-size: 0.8em;
+  border: 1px solid #555;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+#SearchResultList {
+  overflow-y: auto;
+  max-height: 200px; /* Adjust this value as per your requirement */
+  margin-top: 0px;
+  width: 95%;
+  
 }
