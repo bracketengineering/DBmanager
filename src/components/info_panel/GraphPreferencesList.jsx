@@ -3,13 +3,12 @@ import Fuse from 'fuse.js';
 import GraphData from '../GraphData';
 import './styles/GraphPreferences.css';
 
-export default function GraphPreferencesList({ graphData, selectObject }) {
+export default function GraphPreferencesList({ setGraphData, graphData, selectObject }) {
   const [nodeType, setNodeType] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [search, setSearch] = useState(null);
-  //const [searchData, setSearchData] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
-  //const [selectedObject, setSelectedObject] = useState(null);
+  const [filterResults, setFilterResults] = useState([]);
 
   useEffect(() => {
     if(graphData != null) {
@@ -18,15 +17,18 @@ export default function GraphPreferencesList({ graphData, selectObject }) {
         threshold: 0.2,
         keys: ["name"]
       }
-      const searchData = graphData.getNodes();
-      //alert(JSON.stringify(searchData))
+      const searchData = filterResults ? filterResults : graphData.getNodes();
       const newSearch = new Fuse(searchData, options);
       setSearch(newSearch);
     }
-  }, [graphData]);
+  }, [graphData, filterResults]);
 
   const handleNodeTypeChange = (event) => {
-    
+    setNodeType(event.target.value)
+    const newGraphData = event.target.value === 'all' ? graphData.getNodes().filter((item => item.nodeType != "user"))
+    : 
+     graphData.getNodes().filter((item => item.nodeType === event.target.value));
+    setFilterResults(newGraphData);
   };
 
   const handleSearchChange = (event) => {
@@ -37,7 +39,7 @@ export default function GraphPreferencesList({ graphData, selectObject }) {
 
   const handleResultClick = (item) => {
     const nodeToFocus = {focusedNodeId: item.id,  object: graphData.getNodeJSON(item.id)}
-    //alert(JSON.stringify(nodeToFocus));
+
     selectObject(nodeToFocus);
   }
 
@@ -47,7 +49,7 @@ export default function GraphPreferencesList({ graphData, selectObject }) {
       id="SearchResult"
       onClick={() => handleResultClick(result)}
     >
-      {result.name}
+      {result.name ? result.name : result.id}
     </div>
   )
 
@@ -65,20 +67,31 @@ export default function GraphPreferencesList({ graphData, selectObject }) {
               </select>
           </label>
 
-          <label>
+          {<label>
               Search:
               <input 
                 className="DataInput"
                 type="text"
                 value={searchTerm} 
                 onChange={handleSearchChange} />
-          </label>
+          </label>}
 
           {searchResults.length > 0 ? 
           (<div
             id="SearchResultList"
           >
             {searchResults.map(result => (
+              <SearchResult key={result} result={result} />
+            ))}
+          </div>):
+          <></>
+          } 
+
+        { searchResults.length <= 0 ? 
+          (<div
+            id="SearchResultList"
+          >
+            {filterResults.map(result => (
               <SearchResult key={result} result={result} />
             ))}
           </div>):
