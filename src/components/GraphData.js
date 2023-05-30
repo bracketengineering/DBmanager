@@ -1,3 +1,5 @@
+import Fuse from "fuse.js";
+
 export default class GraphData {
   constructor(data) {
     console.log(data);
@@ -37,5 +39,6 @@ export default class GraphData {
   getNodeJSON(nodeID) {
     return this._originalData.find((value, number, index) => value.id === nodeID)
   }
+
 
 }

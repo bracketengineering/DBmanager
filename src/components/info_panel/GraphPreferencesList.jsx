@@ -1,42 +1,41 @@
+import React, { useState } from 'react';
 import './styles/GraphPreferences.css';
 
-export default function GraphPreferencesList() {
-  const TEST_DATA = [
-    { id: 0, name: "Will" },
-    { id: 1, name: "Xav" },
-    { id: 2, name: "George" },
-    { id: 0, name: "Will" },
-    { id: 1, name: "Xav" },
-    { id: 2, name: "George" },
-    { id: 0, name: "Will" },
-    { id: 1, name: "Xav" },
-    { id: 2, name: "George" },
-    { id: 0, name: "Will" },
-    { id: 1, name: "Xav" },
-    { id: 2, name: "George" },
-    { id: 0, name: "Will" },
-    { id: 1, name: "Xav" },
-    { id: 2, name: "George" },
-  ]
+export default function GraphPreferencesList({setGraphData, graphData, search}) {
+  const [nodeType, setNodeType] = useState('all');
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleNodeTypeChange = (event) => {
+      setNodeType(event.target.value);
+      
+  };
+
+  const handleSearchChange = (event) => {
+      setSearchTerm(event.target.value);
+      // Add your logic for searching here
+  };
 
   return (
-    <div id="GraphPreferences">
-        <table id="GraphPreferencesTable">
-          <thead>
-            <tr>
-              <th>Option</th>
-              <th>Control</th>
-            </tr>
-          </thead>
-          <tbody>
-            {TEST_DATA.map((item, index) => (
-              <tr key={index}>
-                <td>{item.id}</td>
-                <td>{item.name}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div id="GraphPreferences">
+          <label>
+              Filter by Node Type:
+              <select value={nodeType} onChange={handleNodeTypeChange}>
+                  <option value="all">All</option>
+                  <option value="user">User</option>
+                  <option value="meal">Meal</option>
+                  <option value="ingredient">Ingredient</option>
+                  <option value="category">Category</option>
+                  <option value="supercategory">Supercategory</option>
+              </select>
+          </label>
+
+          <label>
+              Search:
+              <input 
+                className="DataInput"
+                type="text"
+                value={searchTerm} onChange={handleSearchChange} />
+          </label>
       </div>
   );
-}
+};

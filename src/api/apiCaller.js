@@ -62,7 +62,7 @@ export default class APICaller {
      * @returns {String} Neptune ID of new edge
      */
     addEdge(edge) {
-        return this.#genericPost('/add-edge', edge);
+        return this.#genericPost('/create-edge', edge);
     }
 
     /**
@@ -96,6 +96,7 @@ export default class APICaller {
      * @param {Object} node - node object
      */
     removeNode(node) {
+        alert(JSON.stringify(node));
         return this.#genericPost('/delete-node', node);
     }
 
@@ -104,6 +105,7 @@ export default class APICaller {
      * @returns {String} Neptune ID of new node
      */
     updateNode(node) {
+        alert(JSON.stringify(node));
         return this.#genericPost('/update-node', node);
     }
 

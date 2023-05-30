@@ -1,0 +1,161 @@
+I'm making a react web app that allows me to interact with my AWS Neptune graph database to view, add and change nodes and edges in my graph.
+
+On the right hand side of the screen, I have an editor panel to change attributes of nodes. At the moment, my code looks the node object that has been selected, and makes sub property forms which in turn make a new sub property form inside them if that property is an object. If it isn't an object it just makes a standard property form.
+
+e.g. for the node object:
+
+{
+  "id": "acc4317e-47cd-2af2-2442-34b01dd73f69",
+  "label": "meal",
+  "properties": {
+    "name": "Creamy garlic, lemon & spinach salmon",
+    "difficulty": "Easy"
+  },
+  "incomingEdges": [],
+  "outgoingEdges": [
+    {
+      "id": "50c4317e-47f1-f07a-b7f4-85b7b2061250",
+      "source": "acc4317e-47cd-2af2-2442-34b01dd73f69",
+      "label": "contains",
+      "target": "22c42950-b0bb-cad7-a35d-083e035c11b8",
+      "properties": {
+        "quantity": 2
+      },
+  }]
+}
+
+the id property would just produce a standard property form but the properties property would produce a sub property form where name would produce a standard property form.
+
+this is the code for my subPropertyForm:
+
+import React, { useState } from 'react';
+import Collapsible from './Collapsible';
+import PropertyForm from './PropertyForm';
+import NewEdgeForm from './NewEdgeForm';
+import NewPropertyForm from './NewPropertyForm';
+
+export default function SubPropertyForm({ object = {}, objectKeys = [], updateProperty, editingMode, setSelectedField }) {
+  const [newEdgeFormOpen, setNewEdgeFormOpen] = useState(false);
+  const [newPropertyFormOpen, setNewPropertyFormOpen] = useState(false);
+
+  const isEdge = ['incomingEdges', 'outgoingEdges'].includes(objectKeys[objectKeys.length - 1]);
+  const edgeType = (['incomingEdges'].includes(objectKeys[objectKeys.length - 1]) && isEdge) ? "incomingEdges" : "outgoingEdges";
+  const isProperties = objectKeys[objectKeys.length - 1] === 'properties';
+
+  return (
+    <div>
+      {Object.entries(object).map(([key, value]) => {
+        const newObjectKeys = objectKeys.concat(key);
+        return (
+          <div key={key}>
+            <Collapsible title={key}>
+              {typeof value === 'object' ? (
+                <SubPropertyForm
+                  object={value}
+                  objectKeys={newObjectKeys}
+                  updateProperty={updateProperty}
+                  editingMode={editingMode}
+                  setSelectedField={setSelectedField}
+                />
+              ) : (
+                <PropertyForm
+                  objectKeys={newObjectKeys}
+                  value={value}
+                  updateProperty={updateProperty}
+                  editingMode={editingMode}
+                  setSelectedField={setSelectedField}
+                />
+              )}
+            </Collapsible>
+          </div>
+        );
+      })}
+      {isEdge && editingMode && !newEdgeFormOpen && <button className="form-button" onClick={() => setNewEdgeFormOpen(true)}>New Item</button>}
+      {isEdge && editingMode && newEdgeFormOpen && (
+        <NewEdgeForm 
+          updateProperty={updateProperty}
+          objectKeys={objectKeys}
+          setNewEdgeFormOpen={setNewEdgeFormOpen}
+          setNewPropertyFormOpen={setNewPropertyFormOpen}
+          setSelectedField={setSelectedField}
+          edgeType={edgeType}
+        />
+      )}
+      {isProperties && editingMode && !newPropertyFormOpen && <button className="form-button" onClick={() => setNewPropertyFormOpen(true)}>New Property</button>}
+      {isProperties && editingMode && newPropertyFormOpen && (
+        <NewPropertyForm 
+          updateProperty={updateProperty}
+          objectKeys={objectKeys}
+          setNewPropertyFormOpen={setNewPropertyFormOpen}
+          setSelectedField={setSelectedField}
+        />
+      )}
+    </div>
+  );
+}
+
+and this is the code for my standard property form:
+
+export default function PropertyForm({ objectKeys, value, updateProperty, editingMode, setSelectedField }) {
+    console.log(objectKeys);
+    const handleInputChange = (input) => {
+        updateProperty(objectKeys, input.target.value);
+      };
+    
+    const handleInputClick = () => {
+      if(editingMode) {
+        setSelectedField(objectKeys)
+      }
+    }
+    
+      return (
+        <div key={objectKeys.join('_')} className="input-block">
+          <h3 className="property-form-header">{objectKeys[objectKeys.length - 1]}</h3>
+          <input
+            className="DataInput"
+            type="text"
+            value={value}
+            disabled={!editingMode} 
+            onChange={handleInputChange}
+            onClick={handleInputClick}
+          />
+          {}
+        </div>
+      );
+}
+
+I'm adding functionality to enable me to add new edges to pre-existing nodes. as an example the structure for the outgoing edge property of a node is as follows (note nodes have incomingEdges and outgoingEdges properties):
+
+node.outgoingEdges = [
+ 0:  {
+    "id": "28c4317f-abb6-3274-8e89-da7d081b74bc",
+    "source": "20c4317f-abaa-3fb1-616f-090d3495e4cc",
+    "label": "contains",
+    "target": "eec42e75-67c9-b062-712c-0f7e9796703e",
+    "properties": {
+      "quantity": 5
+    },
+},
+ 1:  {
+    "id": "6ec4317f-abbf-2fef-e76f-f1533f2b7294",
+    "source": "20c4317f-abaa-3fb1-616f-090d3495e4cc",
+    "label": "contains",
+    "target": "f2c4317e-a8e0-746a-b232-e5991642869a",
+    "properties": {
+      "quantity": 10
+    },
+}
+.
+.
+.
+]
+
+At the moment when I add new edges it just creates new property forms based on the property of the edge I'm editing (source, target, label, etc). However, I need it to create a new index in the array of outgoing or incoming edges before creating the edge properties.
+
+
+
+
+
+for this code I want to implement the functionality of being able to search and filter the nodes that are being displayed. All of the nodes are represented by graphData.getNodes()
+
+an example node object structure

@@ -13,14 +13,21 @@ const EditorPanel = ({ data = {}, type = "", setEditingMode, editingMode = false
                           setType, setGraphData, GraphData, setSelectedField, selectedField, fieldInput, setLoading}) => {
   const api = new APICaller();
   const [dataBeingEdited, setDataBeingEdited] = useState(data);
-  
+  const [formValue, setFormValue] = useState(null);
+  const [newEdgeMode, setNewEdgeMode] = useState(false);
 
   useEffect(() => {
     setDataBeingEdited(data);
   }, [data]);
 
   useEffect(() => {
-    updateProperty(selectedField, fieldInput);
+      console.log(fieldInput);
+      if(newEdgeMode) {
+        setFormValue(fieldInput);
+        console.log(formValue);
+      } else if (editingMode) {
+        updateProperty(selectedField, fieldInput);
+      }
   }, [fieldInput])
 
   /**
@@ -51,6 +58,7 @@ const EditorPanel = ({ data = {}, type = "", setEditingMode, editingMode = false
   };
 
   const handleSubmit = async () => {
+    alert(JSON.stringify(dataBeingEdited));
     console.log(dataBeingEdited);
     //alert(JSON.stringify(dataBeingEdited));
    
@@ -99,8 +107,11 @@ const EditorPanel = ({ data = {}, type = "", setEditingMode, editingMode = false
         <SubPropertyForm 
           object={dataBeingEdited} 
           updateProperty={updateProperty} 
+          setNewEdgeMode={setNewEdgeMode}
           editingMode={editingMode} 
           setSelectedField={setSelectedField}
+          formValue={formValue}
+
         />
       )}
       {editingMode ?(

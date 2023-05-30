@@ -1,5 +1,4 @@
 // refresh icon:  https://www.flaticon.com/free-icon/refresh_2805355?term=refresh&page=1&position=2&origin=tag&related_id=2805355
-
 import { node, edge } from './ObjectStructure';
 
 export default function ButtonPanel({ dataBeingEdited, setDataBeingEdited, updateProperty, api, setEditingMode, 
@@ -12,10 +11,11 @@ export default function ButtonPanel({ dataBeingEdited, setDataBeingEdited, updat
     const handleRemoveNode = async () => {
         try{
             console.log(dataBeingEdited);
-            await api.removeNode(dataBeingEdited);
-            alert("Successfully removed node")
+            const response = await api.removeNode(dataBeingEdited);
+            alert(JSON.stringify(response));
         } catch(error) {
-            alert("ERROR", error.message);
+            alert("ERROR" + error);
+            console.log(error);
         }
     }
     

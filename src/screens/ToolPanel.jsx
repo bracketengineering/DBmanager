@@ -1,9 +1,10 @@
 import GraphVisualiser from "../components/graph/GraphVisualiser";
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import InfoPanel from "../components/info_panel/InfoPanel";
 import APICaller from "../api/apiCaller";
 import EditorPanel from "../components/editor/EditorPanel";
 import GraphData from "../components/GraphData";
+import Fuse from 'fuse.js';
 
 // TODO: FIX UI WITH FLIXBOX
 
@@ -13,6 +14,7 @@ export default function ToolPanel() {
   const visRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const [graphData, setGraphData] = useState(null);
+  const [search, setSearch] = useState(null);
   const [graphDimensions, setGraphDimensions] = useState({ width: 800, height: 400 });
   const [selectedObject, setSelectedObject] = useState({});
   const [editingMode, setEditingMode] = useState(false);
@@ -20,6 +22,15 @@ export default function ToolPanel() {
   const [selectedField, setSelectedField] = useState([]);
   const [fieldInput, setFieldInput] = useState("");
 
+  useEffect(() => {
+    const options = {
+      minMatchCharLength: 1,
+      threshold: 0.2,
+      keys: ["name"]
+    }
+    const searchData = graphData.getAllGraphData();
+    setSearch(new Fuse(searchData, options))
+  }, [graphData]);
 
   function selectObject(newObject) {
     if (!editingMode) {
@@ -62,9 +73,10 @@ export default function ToolPanel() {
       </div>
       <div id="InfoPanelContainer">
         <InfoPanel 
-          selectedObject={selectedObject.object} 
+          setGraphData={setGraphData}
           graphData={graphData} 
           selectObject={setSelectedObject} 
+          search={search}
         />
       </div>
       <div id="EditorContainer">

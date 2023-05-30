@@ -4,14 +4,13 @@ import PropertyForm from './PropertyForm';
 import NewEdgeForm from './NewEdgeForm';
 import NewPropertyForm from './NewPropertyForm';
 
-export default function SubPropertyForm({ object = {}, objectKeys = [], updateProperty, editingMode, setSelectedField }) {
+export default function SubPropertyForm({ object = {}, objectKeys = [], updateProperty, setNewEdgeMode, editingMode, setSelectedField, formValue }) {
   const [newEdgeFormOpen, setNewEdgeFormOpen] = useState(false);
   const [newPropertyFormOpen, setNewPropertyFormOpen] = useState(false);
 
   const isEdge = ['incomingEdges', 'outgoingEdges'].includes(objectKeys[objectKeys.length - 1]);
   const edgeType = (['incomingEdges'].includes(objectKeys[objectKeys.length - 1]) && isEdge) ? "incomingEdges" : "outgoingEdges";
   const isProperties = objectKeys[objectKeys.length - 1] === 'properties';
-
   return (
     <div>
       {Object.entries(object).map(([key, value]) => {
@@ -24,8 +23,10 @@ export default function SubPropertyForm({ object = {}, objectKeys = [], updatePr
                   object={value}
                   objectKeys={newObjectKeys}
                   updateProperty={updateProperty}
+                  setNewEdgeMode={setNewEdgeMode}
                   editingMode={editingMode}
                   setSelectedField={setSelectedField}
+                  formValue={formValue}
                 />
               ) : (
                 <PropertyForm
@@ -43,23 +44,21 @@ export default function SubPropertyForm({ object = {}, objectKeys = [], updatePr
       {isEdge && editingMode && !newEdgeFormOpen && <button className="form-button" onClick={() => setNewEdgeFormOpen(true)}>New Item</button>}
       {isEdge && editingMode && newEdgeFormOpen && (
         <NewEdgeForm 
-          updateProperty={updateProperty}
-          objectKeys={objectKeys}
           setNewEdgeFormOpen={setNewEdgeFormOpen}
           setNewPropertyFormOpen={setNewPropertyFormOpen}
+          newPropertyFormOpen={newPropertyFormOpen}
           setSelectedField={setSelectedField}
-          edgeType={edgeType}
+          formValue={formValue}
+          setNewEdgeMode={setNewEdgeMode}
         />
       )}
-      {isProperties && editingMode && !newPropertyFormOpen && <button className="form-button" onClick={() => setNewPropertyFormOpen(true)}>New Property</button>}
+      {/* {isProperties && editingMode && !newPropertyFormOpen && <button className="form-button" onClick={() => setNewPropertyFormOpen(true)}>New Property</button>}
       {isProperties && editingMode && newPropertyFormOpen && (
         <NewPropertyForm 
-          updateProperty={updateProperty}
-          objectKeys={objectKeys}
           setNewPropertyFormOpen={setNewPropertyFormOpen}
           setSelectedField={setSelectedField}
         />
-      )}
+      )} */}
     </div>
   );
 }
