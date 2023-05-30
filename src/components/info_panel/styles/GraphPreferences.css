@@ -5,7 +5,7 @@
   background-color: #262626;
   color: white;
   overflow-y: hidden;
-  align-items: center;
+  align-items: left;
   padding: 5px;
   
 }
@@ -58,7 +58,6 @@
 
 #SearchResultList {
   overflow-y: auto;
-  max-height: 200px; /* Adjust this value as per your requirement */
   margin-top: 0px;
   width: 95%;
   

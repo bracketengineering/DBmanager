@@ -1,6 +1,6 @@
 import GraphPreferencesList from "./GraphPreferencesList";
 
-export default function GraphPreferencesPanel({setGraphData, graphData, search, selectObject}) {
+export default function GraphPreferencesPanel({ graphData, search, selectObject}) {
   return (
     <div id="PreferencesContainer">
       <div id="PanelTabsContainer">
@@ -8,7 +8,7 @@ export default function GraphPreferencesPanel({setGraphData, graphData, search, 
           <p>Preferences</p>
         </div>
       </div>
-      <GraphPreferencesList setGraphData={setGraphData} graphData={graphData} search={search} selectObject={selectObject}/>
+      <GraphPreferencesList graphData={graphData} search={search} selectObject={selectObject}/>
     </div>
   );
 }

@@ -3,7 +3,7 @@ import Fuse from 'fuse.js';
 import GraphData from '../GraphData';
 import './styles/GraphPreferences.css';
 
-export default function GraphPreferencesList({ setGraphData, graphData, selectObject }) {
+export default function GraphPreferencesList({ graphData, selectObject }) {
   const [nodeType, setNodeType] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [search, setSearch] = useState(null);
@@ -17,18 +17,21 @@ export default function GraphPreferencesList({ setGraphData, graphData, selectOb
         threshold: 0.2,
         keys: ["name"]
       }
-      const searchData = filterResults ? filterResults : graphData.getNodes();
+      const searchData = filterResults
       const newSearch = new Fuse(searchData, options);
       setSearch(newSearch);
+      setFilterResults(graphData.getNodes().filter((item => item.nodeType != "user")));
     }
-  }, [graphData, filterResults]);
+  }, [graphData]);
 
   const handleNodeTypeChange = (event) => {
     setNodeType(event.target.value);
+    const tempNodeType = 'all'
     const newGraphData = event.target.value === 'all' ? graphData.getNodes().filter((item => item.nodeType != "user"))
     : 
      graphData.getNodes().filter((item => item.nodeType === event.target.value));
     setFilterResults(newGraphData);
+    
   };
 
   const handleSearchChange = (event) => {
@@ -100,3 +103,5 @@ export default function GraphPreferencesList({ setGraphData, graphData, selectOb
       </div>
   );
 };
+
+

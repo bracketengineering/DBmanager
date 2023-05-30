@@ -19,10 +19,10 @@ export default function ButtonPanel({ dataBeingEdited, setDataBeingEdited, updat
         }
     }
     
-    const handleAddEdge = () => {
-        setDataBeingEdited(edge);
-        setEditingMode(true);
-    }
+    // const handleAddEdge = () => {
+    //     setDataBeingEdited(edge);
+    //     setEditingMode(true);
+    // }
     
     const handleRemoveEdge = async () => {
         try{
@@ -34,29 +34,29 @@ export default function ButtonPanel({ dataBeingEdited, setDataBeingEdited, updat
         }
     }
 
-    const handleRefresh = () => {
-        api.getAllGraphData().then(response => {
-            const data = new GraphData(response);
-            setGraphData(data);
-          }).catch(err => console.log(err))
-        setLoading(false);
+    // const handleRefresh = () => {
+    //     api.getAllGraphData().then(response => {
+    //         const data = new GraphData(response);
+    //         setGraphData(data);
+    //       }).catch(err => console.log(err))
+    //     setLoading(false);
         
-    }
+    // }
 
     return (
         <div className='ButtonPanel'>
-            <button className="form-button" onClick={() => handleRefresh()}>
+            {/* <button className="form-button" onClick={() => handleRefresh()}>
                 Refresh
-            </button>
+            </button> */}
             <button className="form-button" onClick={() => handleAddNode()}>
-                Add Node
+                Add Test Node
             </button>
             <button className="form-button" onClick={async () => handleRemoveNode()}>
                 Remove Node
             </button>
-            <button className="form-button" onClick={() => handleAddEdge()}>
+            {/* <button className="form-button" onClick={() => handleAddEdge()}>
                 Add Edge
-            </button>
+            </button> */}
             <button className="form-button" onClick={async () => handleRemoveEdge()}>
                 Remove Edge
             </button>
