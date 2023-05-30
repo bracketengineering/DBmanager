@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 export default function NewEdgeInputForm({ label, newEdge, setNewEdge, formValue, setNewPropertyFormOpen, selectedField, setSelectedField, setNewEdgeMode }) {
   const [formState, setFormState] = useState({
-    key: label,
+    key: label.toLowerCase(),
     value: ''
   });
 
