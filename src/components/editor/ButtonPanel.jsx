@@ -1,11 +1,12 @@
 // refresh icon:  https://www.flaticon.com/free-icon/refresh_2805355?term=refresh&page=1&position=2&origin=tag&related_id=2805355
 import { node, edge } from './ObjectStructure';
 
-export default function ButtonPanel({ dataBeingEdited, setDataBeingEdited, updateProperty, api, setEditingMode, 
+export default function ButtonPanel({ dataBeingEdited, setDataBeingEdited, updateProperty, api, setEditingMode, setUpdateType,
     setGraphData, GraphData, setLoading}) {
     const handleAddNode = () => {
-        setDataBeingEdited({...node});
+        setDataBeingEdited(structuredClone(node));
         setEditingMode(true);
+        setUpdateType('addNode');
     }
     
     const handleRemoveNode = async () => {

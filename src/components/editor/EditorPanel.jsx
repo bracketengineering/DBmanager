@@ -6,7 +6,7 @@ import LinkForm from './LinkForm';
 import SubPropertyForm from './SubPropertyForm';
 import GraphData from "../GraphData";
 import ButtonPanel from "./ButtonPanel";
-import { Graph } from "react-d3-graph";
+
 
 
 const EditorPanel = ({ data = {}, type = "", setEditingMode, editingMode = false, graphData, 
@@ -15,9 +15,11 @@ const EditorPanel = ({ data = {}, type = "", setEditingMode, editingMode = false
   const [dataBeingEdited, setDataBeingEdited] = useState(data);
   const [formValue, setFormValue] = useState(null);
   const [newEdgeMode, setNewEdgeMode] = useState(false);
+  const [updateType, setUpdateType] = useState('updateNode');
 
   useEffect(() => {
     setDataBeingEdited(data);
+    setUpdateType('updateNode');
   }, [data]);
 
   useEffect(() => {
@@ -59,8 +61,6 @@ const EditorPanel = ({ data = {}, type = "", setEditingMode, editingMode = false
 
   const handleSubmit = async () => {
     alert(JSON.stringify(dataBeingEdited));
-    console.log(dataBeingEdited);
-    //alert(JSON.stringify(dataBeingEdited));
    
       //const response = await api.updateNode(dataBeingEdited);
     
@@ -71,7 +71,7 @@ const EditorPanel = ({ data = {}, type = "", setEditingMode, editingMode = false
           setType("node");
           dataBeingEdited.incomingEdges = Object.values(dataBeingEdited.incomingEdges);
           dataBeingEdited.outgoingEdges = Object.values(dataBeingEdited.outgoingEdges);
-          await api.updateNode(dataBeingEdited);
+          updateType==='addNode' ? await api.addNode(dataBeingEdited) : await api.updateNode(dataBeingEdited);
         } 
         // returns true if data is edge
         else if (dataBeingEdited.source) {
@@ -98,6 +98,7 @@ const EditorPanel = ({ data = {}, type = "", setEditingMode, editingMode = false
         setGraphData={setGraphData}
         GraphData={GraphData}
         setLoading={setLoading}
+        setUpdateType={setUpdateType}
       />
       {<h1 className="object-title">{(Object.keys(dataBeingEdited).length > 1) ? 
         (dataBeingEdited.properties.hasOwnProperty('name') ? dataBeingEdited.properties.name: "New Object"):''}</h1> }
@@ -111,14 +112,15 @@ const EditorPanel = ({ data = {}, type = "", setEditingMode, editingMode = false
           editingMode={editingMode} 
           setSelectedField={setSelectedField}
           formValue={formValue}
-
+          updateType={updateType}
         />
       )}
       {editingMode ?(
         <> <button className="form-button" onClick={handleCancel}>Cancel</button>
-        <button className="form-button" onClick={() => handleSubmit()}>Submit</button> </>) : 
-        (<><button className="form-button" onClick={() => setEditingMode(true)}>Edit</button> </>
-      )}
+        <button className="form-button" onClick={() => handleSubmit()}>Submit</button> 
+        </> ) : 
+        (<><button className="form-button" onClick={() => setEditingMode(true)}>Edit</button> </>)
+      }
     </div>
   );
 };

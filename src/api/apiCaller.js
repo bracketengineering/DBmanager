@@ -89,7 +89,7 @@ export default class APICaller {
      * @returns {String} Neptune ID of new node
      */
     addNode(node) {
-        return this.#genericPost('/add-node', node);
+        return this.#genericPost('/create-node', node);
     }
 
     /**

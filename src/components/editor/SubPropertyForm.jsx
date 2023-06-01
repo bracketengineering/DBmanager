@@ -4,7 +4,7 @@ import PropertyForm from './PropertyForm';
 import NewEdgeForm from './NewEdgeForm';
 import NewPropertyForm from './NewPropertyForm';
 
-export default function SubPropertyForm({ object = {}, objectKeys = [], updateProperty, setNewEdgeMode, editingMode, setSelectedField, formValue }) {
+export default function SubPropertyForm({ object = {}, objectKeys = [], updateProperty, setNewEdgeMode, editingMode, setSelectedField, formValue, updateType }) {
   const [newEdgeFormOpen, setNewEdgeFormOpen] = useState(false);
   const [newPropertyFormOpen, setNewPropertyFormOpen] = useState(false);
 
@@ -27,6 +27,7 @@ export default function SubPropertyForm({ object = {}, objectKeys = [], updatePr
                   editingMode={editingMode}
                   setSelectedField={setSelectedField}
                   formValue={formValue}
+                  updateType={updateType}
                 />
               ) : (
                 <PropertyForm
@@ -35,6 +36,7 @@ export default function SubPropertyForm({ object = {}, objectKeys = [], updatePr
                   updateProperty={updateProperty}
                   editingMode={editingMode}
                   setSelectedField={setSelectedField}
+                  updateType={updateType}
                 />
               )}
             </Collapsible>
