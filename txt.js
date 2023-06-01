@@ -1,0 +1,142 @@
+const categories = {
+  Healthy: [
+    "Garlic & black olive sharing bread",
+    "Caponata pasta",
+    "Spicy avocado wraps",
+    "Cod with butter bean colcannon",
+    "Quick chicken hummus bowl",
+    "Spanish chicken stew",
+    "Oregano halloumi with orzo salad",
+    "Butter bean, chorizo & spinach baked eggs",
+    "Salmon risotto",
+    "Veggie protein chilli",
+    "Spiced carrot & lentil soup",
+    "Baked ginger & spinach sweet potato",
+    "Cod with cucumber, avocado & mango salsa salad",
+    "Vegetarian ramen",
+    "Egg & rocket pizzas",
+    "Smoky beans & baked eggs",
+    "Miso mushroom & tofu noodle soup",
+    "Dhal with garam masala carrots",
+    "Overnight oats",
+    "Microwave shakshuka",
+    "Brown butter linguine",
+  ],
+
+  Indian: [
+    "Spicy avocado wraps",
+    "Quick chicken hummus bowl",
+    "Smoky chickpeas on toast",
+    "Dhal with garam masala carrots",
+    "Quick & spicy nasi goreng",
+  ],
+
+  Asian: [
+    "Spicy avocado wraps",
+    "Ginger, sesame and chilli prawn & broccoli stir-fry",
+    "Vegetarian ramen",
+    "Miso mushroom & tofu noodle soup",
+    "Quick & spicy nasi goreng",
+    "Crispy chilli turkey noodles",
+  ],
+
+  Pasta: [
+    "Caponata pasta",
+    "Cajun chicken pasta",
+    "Speedy sausage stroganoff tagliatelle",
+    "Chicken & chorizo ragu",
+    "Chicken pasta bake",
+    "The best spaghetti bolognese recipe",
+    "Brown butter linguine",
+  ],
+
+  Vegetarian: [
+    "Garlic & black olive sharing bread",
+    "Caponata pasta",
+    "Spicy avocado wraps",
+    "Oregano halloumi with orzo salad",
+    "Butter bean, chorizo & spinach baked eggs",
+    "Smoky chickpeas on toast",
+    "Sardines & tomatoes on toast",
+    "Salmon risotto",
+    "Veggie protein chilli",
+    "Spiced carrot & lentil soup",
+    "Baked ginger & spinach sweet potato",
+    "Vegetarian ramen",
+    "Egg & rocket pizzas",
+    "Smoky beans & baked eggs",
+    "Miso mushroom & tofu noodle soup",
+    "Dhal with garam masala carrots",
+    "Falafel burgers",
+    "Cauliflower cheese",
+    "Overnight oats",
+    "Microwave shakshuka",
+    "Brown butter linguine",
+  ],
+
+  Desserts: [
+    "Granny's Victoria sponge",
+    "Ultimate chocolate cake",
+    "Lemon drizzle cake",
+    "Banana bread",
+    "American pancakes",
+    "Vintage chocolate chip cookies",
+    "Easy pancakes",
+  ],
+
+  Breakfast: [
+    "Overnight oats",
+    "Poached eggs",
+    "Perfect scrambled eggs recipe",
+    "American pancakes",
+    "Mexican eggy bread",
+  ],
+
+  Mexican: [
+    "Mexican eggy bread",
+    "Spicy avocado wraps",
+    "Chilli con carne recipe",
+  ],
+
+  Italian: [
+    "Caponata pasta",
+    "Cajun chicken pasta",
+    "Chicken & chorizo ragu",
+    "Chicken pasta bake",
+    "The best spaghetti bolognese recipe",
+    "Brown butter linguine",
+  ],
+
+  Seafood: [
+    "Cod with butter bean colcannon",
+    "Ginger, sesame and chilli prawn & broccoli stir-fry",
+    "Creamy garlic, lemon & spinach salmon",
+    "Sardines & tomatoes on toast",
+    "Salmon risotto",
+    "Cod with cucumber, avocado & mango salsa salad",
+  ],
+
+  Chicken: [
+    "Quick chicken hummus bowl",
+    "Spanish chicken stew",
+    "Chicken pesto wrap",
+    "Chicken & chorizo ragu",
+    "Chicken pasta bake",
+  ],
+
+  Soups: [
+    "Chorizo & chickpea soup",
+    "Spiced carrot & lentil soup",
+    "Miso mushroom & tofu noodle soup",
+  ],
+
+  British: [
+    "Toad-in-the-hole",
+    "Easy pancakes",
+    "Best Yorkshire puddings",
+    "Cottage pie",
+    "Granny's Victoria sponge",
+    "Ultimate roast potatoes",
+    "Pea & ham pot pie",
+  ],
+};

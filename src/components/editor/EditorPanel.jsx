@@ -26,7 +26,7 @@ const EditorPanel = ({ data = {}, type = "", setEditingMode, editingMode = false
       console.log(fieldInput);
       if(newEdgeMode) {
         setFormValue(fieldInput);
-        alert(formValue);
+        //alert(formValue);
       } else if (editingMode) {
         updateProperty(selectedField, fieldInput);
       }
