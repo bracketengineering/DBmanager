@@ -3,7 +3,7 @@ import APICaller from "../../api/apiCaller";
 
 export default function PropertyForm({ objectKeys, value, updateProperty, editingMode, setSelectedField, updateType }) {
     const api = new APICaller();
-    const [newProperty, setNewProperty] = useState({});
+    const [header] = useState(objectKeys[objectKeys.length - 1]);
 
     //alert(objectKeys[objectKeys.length - 1]);
     const handleInputChange = (input) => {
@@ -19,12 +19,12 @@ export default function PropertyForm({ objectKeys, value, updateProperty, editin
     
       return (
         <div key={objectKeys.join('_')} className="input-block">
-          <h3 className="property-form-header">{objectKeys[objectKeys.length - 1]}</h3>
+          <h3 className="property-form-header">{header}</h3>
           <input
             className="DataInput"
             type="text"
             value={value}
-            disabled={((objectKeys[objectKeys.length - 1] === 'id') ? true :!editingMode)} 
+            disabled={((updateType==='updateNode' && ((header === 'id') || (header === 'label')))  ? true :!editingMode)} 
             onChange={handleInputChange}
             onClick={handleInputClick}
           />

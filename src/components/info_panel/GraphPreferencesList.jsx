@@ -48,7 +48,7 @@ export default function GraphPreferencesList({ graphData, selectObject }) {
   };
 
   const handleResultClick = (item) => {
-    const nodeToFocus = {focusedNodeId: item.id,  object: graphData.getNodeJSON(item.id)}
+    const nodeToFocus = {focusedNodeId: item.id,  object: graphData.getNodeJSON(item.id), nodeId: item.id}
 
     selectObject(nodeToFocus);
   }
