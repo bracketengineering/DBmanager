@@ -5,6 +5,8 @@ import APICaller from "../api/apiCaller";
 import EditorPanel from "../components/editor/EditorPanel";
 import GraphData from "../components/GraphData";
 import Fuse from 'fuse.js';
+import Lottie from 'lottie-react'
+import {loadingScreen} from "../components/93857-abstract-modular-cube-1.js";
 
 // TODO: FIX UI WITH FLIXBOX
 
@@ -12,7 +14,7 @@ export default function ToolPanel() {
   const api = new APICaller();
   
   const visRef = useRef(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [graphData, setGraphData] = useState(null);
   const [search, setSearch] = useState(null);
   //const [refresh, setRefresh] = useState(false);
@@ -33,11 +35,12 @@ export default function ToolPanel() {
   }//
 
   useEffect(() => {
-    if (!loading) {
-      setLoading(true);
+    if (loading) {
+      
       api.getAllGraphData().then(response => {
         const data = new GraphData(response);
         setGraphData(data);
+        setLoading(false);
       }).catch(err => console.log(err))
     }
 
@@ -45,20 +48,25 @@ export default function ToolPanel() {
 
   useEffect(() => {
     function handleWindowResize() {
-      setGraphDimensions({
-        width: visRef.current.offsetWidth,
-        height: visRef.current.offsetHeight
-      })
+      if (visRef.current) {
+        setGraphDimensions({
+          width: visRef.current.offsetWidth,
+          height: visRef.current.offsetHeight
+        })
+      }
     }
+    
 
     window.addEventListener('resize', handleWindowResize);
     handleWindowResize();
     return () => {
       window.removeEventListener('resize', handleWindowResize);
     }
-  }, [])
+  }, [loading])
 
   return (
+    <>
+    {loading ? <div id="animationContainer"><Lottie id="animation" animationData={loadingScreen}/></div>:
     <div id="ToolPanel">
       <div ref={visRef} id="VisualiserContainer">
         <GraphVisualiser graphData={graphData} selectedObject={selectedObject}
@@ -90,5 +98,6 @@ export default function ToolPanel() {
         />
       </div>
     </div>
+    }</>
   );
 };

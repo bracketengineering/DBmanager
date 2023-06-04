@@ -22,14 +22,14 @@ export default function GraphVisualiser({ selectObject, graphData, dimensions, s
   }, [selectedObject])
 
   const graphConfig = {
-    //nodeHighlightBehavior: true,
+    nodeHighlightBehavior: true,
     width: dimensions.width,
     height: dimensions.height,
     focusAnimationDuration: 0.2,
     initialZoom: 3,
     directed: true,
-    //staticGraphWithDragAndDrop: true,
-    automaticRearrangeAfterDropNode: true,
+    staticGraphWithDragAndDrop: true,
+    //automaticRearrangeAfterDropNode: true,
     d3: {
       gravity: -50,
       alpha: .5
